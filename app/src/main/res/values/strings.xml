@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Accudrip</string>
+    <string name="col1">Date</string>
+    <string name="col2">Status</string>
+    <string name="col3">Start</string>
+    <string name="col4">Stop</string>
+    <string name="col5">Status</string>
+    <string name="row1Date">12-2-22</string>
+    <string name="row1Status1">Low</string>
+    <string name="row1Start">7:00AM</string>
+    <string name="row1Stop">12:00PM</string>
+    <string name="row1Status2">High</string>
+    <string name="date_label">Date</string>
+    <string name="time_label">Time</string>
+    <string name="duration_label">Duration</string>
+    <string name="no_schedules_found">No scheduleInfos found.</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="irrigate">IRRIGATE</string>
+    <string name="schedule_irrigate">Schedule Irrigate</string>
+</resources>
