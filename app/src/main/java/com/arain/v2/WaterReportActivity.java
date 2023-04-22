@@ -89,7 +89,7 @@ public class WaterReportActivity extends AppCompatActivity implements View.OnCli
                 startActivity(intent);
                 break;
             case R.id.nav_report:
-                Intent intent1 = new Intent(this, ReportActivity.class);
+                Intent intent1 = new Intent(this, ReportsActivity.class);
                 startActivity(intent1);
                 break;
             case R.id.nav_profile:

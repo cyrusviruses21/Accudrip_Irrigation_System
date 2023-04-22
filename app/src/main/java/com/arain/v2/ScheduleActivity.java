@@ -7,10 +7,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -29,7 +28,7 @@ import java.util.Locale;
 public class ScheduleActivity extends AppCompatActivity {
     //declare variables
 
-    private Switch switchPump;
+    private Button switchPumpOn, switchPumpOff;
     private Button setTime;
     private EditText editTextDuration;
     private FirebaseDatabase firebaseDatabase;
@@ -48,7 +47,8 @@ public class ScheduleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_schedule);
 
         // Initialize the views
-        switchPump = findViewById(R.id.switchPump);
+        switchPumpOn = findViewById(R.id.switchPumpOn);
+        switchPumpOff = findViewById(R.id.switchPumpOff);
         setTime = findViewById(R.id.setTime);
         editTextDuration = findViewById(R.id.editTextDuration);
 
@@ -60,24 +60,56 @@ public class ScheduleActivity extends AppCompatActivity {
 
         calendar = Calendar.getInstance();
 
-        // Set an OnCheckedChangeListener for the switch
-        switchPump.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            isPumpOn = isChecked;
-            if (isChecked) {
-                switchPump.setText("ON"); // Set label to "On" when checked
-                //musend sa currentstatus with date, time, duration.
-                saveUserSelections();
-            } else {
-                switchPump.setText("OFF"); // Set label to "Off" when unchecked
-                FirebaseDatabase.getInstance().getReference("ScheduleInfo").child("pumpOn").setValue(false);
-                if (alarmManager != null){
-                    alarmManager.cancel(alarmServiceIntent);
-                }
-            }
+        switchPumpOn.setOnClickListener(view -> {
+            // Turn on the pump and disable the start button
+            FirebaseDatabase.getInstance().getReference("ScheduleInfo").child("pumpOn").setValue(true);
+            switchPumpOn.setEnabled(false);
+            switchPumpOff.setEnabled(true);
+
+            setTime.setEnabled(false);
+            editTextDuration.setEnabled(false);
+
+
+            saveUserSelections();
+            loadUserSelections();
+
+            // Start the pump here...
         });
 
-        // Load the user's selections from the database
+        switchPumpOff.setOnClickListener(view -> {
+            // Turn off the pump and enable the start button
+            FirebaseDatabase.getInstance().getReference("ScheduleInfo").child("pumpOn").setValue(false);
+            switchPumpOn.setEnabled(true);
+            switchPumpOff.setEnabled(false);
+
+            setTime.setEnabled(true);
+            editTextDuration.setEnabled(true);
+            if (alarmManager != null){
+                alarmManager.cancel(alarmServiceIntent);
+            }
+
+            // Cancel the pump here...
+        });
         loadUserSelections();
+
+//        // Set an OnCheckedChangeListener for the switch
+//        switchPump.setOnCheckedChangeListener((buttonView, isChecked) -> {
+//            isPumpOn = isChecked;
+//            if (isChecked) {
+//                switchPump.setText("ON"); // Set label to "On" when checked
+//                //musend sa currentstatus with date, time, duration.
+//                saveUserSelections();
+//            } else {
+//                switchPump.setText("OFF"); // Set label to "Off" when unchecked
+//                FirebaseDatabase.getInstance().getReference("ScheduleInfo").child("pumpOn").setValue(false);
+//                if (alarmManager != null){
+//                    alarmManager.cancel(alarmServiceIntent);
+//                }
+//            }
+//        });
+
+        // Load the user's selections from the database
+//        loadUserSelections();
 
         // Set an OnClickListener for the time button
         setTime.setOnClickListener(v -> showTimePickerDialog());
@@ -106,7 +138,12 @@ public class ScheduleActivity extends AppCompatActivity {
                     selectedTime = dataSnapshot.child("time").getValue(String.class);
                     setTime.setText(selectedTime);
                     editTextDuration.setText(dataSnapshot.child("duration").getValue(String.class));
-                    switchPump.setChecked(Boolean.TRUE.equals(dataSnapshot.child("pumpOn").getValue(Boolean.class)));
+
+                    // Set the state of the start button based on the pump status
+                    boolean pumpOn = Boolean.TRUE.equals(dataSnapshot.child("pumpOn").getValue(Boolean.class));
+                    switchPumpOn.setEnabled(pumpOn);
+                    switchPumpOff.setEnabled(!pumpOn);
+
                     timeInMilliSeconds = dataSnapshot.child("timeInMilliSeconds").getValue(Long.class);
                 }
             }

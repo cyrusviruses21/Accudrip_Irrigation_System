@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class ScheduleService extends BroadcastReceiver {
-
+         
     @SuppressLint("SimpleDateFormat")
     @Override
     public void onReceive(Context context, Intent intent) {

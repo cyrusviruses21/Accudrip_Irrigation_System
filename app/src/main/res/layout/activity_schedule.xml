@@ -22,23 +22,56 @@
             android:layout_height="match_parent"
             android:background="@drawable/light">
 
-            <Switch
-                android:id="@+id/switchPump"
+            <Button
+                android:id="@+id/switchPumpOn"
                 android:layout_width="150dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/backgroundniba"
-                android:backgroundTint="#d81159"
+                android:backgroundTint="#40f5da"
                 android:fontFamily="@font/baloo"
-                android:paddingLeft="30dp"
-                android:text="OFF"
+                android:text="START"
                 android:textColor="@color/white"
                 android:textSize="25sp"
                 android:textStyle="italic"
                 app:backgroundTint="@null"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextDuration"
+                app:layout_constraintTop_toBottomOf="@+id/durationTitleSecond"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.202"
+                app:layout_constraintStart_toEndOf="@+id/switchPumpOn"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.621"
+                app:srcCompat="@drawable/humidity"
+                app:tint="@android:color/white" />
+
+            <Button
+                android:id="@+id/switchPumpOff"
+                android:layout_width="150dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/backgroundniba"
+                android:backgroundTint="#d81159"
+                android:enabled="false"
+                android:fontFamily="@font/baloo"
+                android:text="cancel"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="italic"
+                app:backgroundTint="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/switchPumpOn"
                 tools:ignore="UseSwitchCompatOrMaterialXml" />
 
             <TextView
@@ -75,7 +108,9 @@
                 android:layout_marginTop="70dp"
                 android:background="@drawable/backgroundniba"
                 android:backgroundTint="#fbb13c"
-                android:text="Select Time"
+                android:text="4:30"
+                android:textColor="#454444"
+                android:textSize="25sp"
                 app:backgroundTint="@null"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -83,16 +118,39 @@
 
             <EditText
                 android:id="@+id/editTextDuration"
-                android:layout_width="203dp"
+                android:layout_width="30dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="13dp"
                 android:ems="10"
-                android:hint="SET DURATION (in seconds)"
+                android:hint=""
                 android:inputType="textPersonName"
-                android:textSize="15sp"
+                android:textColor="#454444"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/setTime" />
+
+            <TextView
+                android:id="@+id/durationTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo"
+                android:text="SET DURATION"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextDuration" />
+
+            <TextView
+                android:id="@+id/durationTitleSecond"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo"
+                android:text="(seconds)"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/durationTitle" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -102,8 +160,8 @@
         android:id="@+id/home"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/baloo"
         android:background="@drawable/btn_background"
+        android:fontFamily="@font/baloo"
         android:text="HOME"
         android:textColor="#3b3939"
         app:backgroundTint="@null"

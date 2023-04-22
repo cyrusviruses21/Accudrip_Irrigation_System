@@ -16,13 +16,13 @@
             android:title="Data" />
     </group>
 
-    <item android:title="Timeline">
+    <item android:title="Schedule">
         <menu>
             <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_schedules"
                     android:icon="@drawable/ic_baseline_schedule_24"
-                    android:title="Calendar" />
+                    android:title="Schedule" />
             </group>
         </menu>
     </item>
