@@ -65,13 +65,10 @@ public class ScheduleActivity extends AppCompatActivity {
             FirebaseDatabase.getInstance().getReference("ScheduleInfo").child("pumpOn").setValue(true);
             switchPumpOn.setEnabled(false);
             switchPumpOff.setEnabled(true);
-
             setTime.setEnabled(false);
             editTextDuration.setEnabled(false);
 
-
             saveUserSelections();
-            loadUserSelections();
 
             // Start the pump here...
         });
@@ -81,7 +78,6 @@ public class ScheduleActivity extends AppCompatActivity {
             FirebaseDatabase.getInstance().getReference("ScheduleInfo").child("pumpOn").setValue(false);
             switchPumpOn.setEnabled(true);
             switchPumpOff.setEnabled(false);
-
             setTime.setEnabled(true);
             editTextDuration.setEnabled(true);
             if (alarmManager != null){
@@ -90,7 +86,6 @@ public class ScheduleActivity extends AppCompatActivity {
 
             // Cancel the pump here...
         });
-        loadUserSelections();
 
 //        // Set an OnCheckedChangeListener for the switch
 //        switchPump.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -109,7 +104,7 @@ public class ScheduleActivity extends AppCompatActivity {
 //        });
 
         // Load the user's selections from the database
-//        loadUserSelections();
+        loadUserSelections();
 
         // Set an OnClickListener for the time button
         setTime.setOnClickListener(v -> showTimePickerDialog());
@@ -141,8 +136,8 @@ public class ScheduleActivity extends AppCompatActivity {
 
                     // Set the state of the start button based on the pump status
                     boolean pumpOn = Boolean.TRUE.equals(dataSnapshot.child("pumpOn").getValue(Boolean.class));
-                    switchPumpOn.setEnabled(pumpOn);
-                    switchPumpOff.setEnabled(!pumpOn);
+                    switchPumpOn.setEnabled(!pumpOn);
+                    switchPumpOff.setEnabled(pumpOn);
 
                     timeInMilliSeconds = dataSnapshot.child("timeInMilliSeconds").getValue(Long.class);
                 }
