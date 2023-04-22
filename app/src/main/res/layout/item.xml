@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="8dp"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="16dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date :"
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:fontFamily="@font/baloo"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/schedDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="22-Apr-2023"
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:fontFamily="@font/baloo"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Duration : "
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:fontFamily="@font/baloo"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/schedDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:fontFamily="@font/baloo"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Humidity : "
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:fontFamily="@font/baloo"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/humidityStat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="65"
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:fontFamily="@font/baloo"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Soil Moisture : "
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:fontFamily="@font/baloo"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/soilMoistureStat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="65"
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:fontFamily="@font/baloo"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temperature : "
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:fontFamily="@font/baloo"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/tempStat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="65"
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:fontFamily="@font/baloo"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Start Time : "
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:fontFamily="@font/baloo"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/schedTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="17:36"
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:fontFamily="@font/baloo"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Water Level : "
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:fontFamily="@font/baloo"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/waterLevelStat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HIGH"
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:fontFamily="@font/baloo"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
