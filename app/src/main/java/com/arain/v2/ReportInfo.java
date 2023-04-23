@@ -1,6 +1,7 @@
 package com.arain.v2;
 
 public class ReportInfo {
+    private String waterConsumption;
     private String date;
     private String time;
     private String duration;
@@ -65,8 +66,15 @@ public class ReportInfo {
         this.waterLevel = waterLevel;
     }
 
+    public String getWaterConsumption() {
+        return waterConsumption;
+    }
+
+    public void setWaterConsumption(String waterConsumption) {
+        this.waterConsumption = waterConsumption;
+    }
     public ReportInfo(String date, String time, String duration, String humidity,
-                      String soilMoisture,  String temperature,  String waterLevel) {
+                      String soilMoisture, String temperature, String waterLevel, String waterConsumption) {
         this.date = date;
         this.time = time;
         this.duration = duration;
@@ -74,6 +82,7 @@ public class ReportInfo {
         this.soilMoisture = soilMoisture;
         this.temperature = temperature;
         this.waterLevel = waterLevel;
+        this.waterConsumption = waterConsumption;
     }
 }
 

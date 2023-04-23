@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -40,6 +41,7 @@ public class ScheduleActivity extends AppCompatActivity {
     private PendingIntent alarmServiceIntent;
     private AlarmManager alarmManager;
     private Calendar calendar;
+    private String waterConsumption;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,48 +62,33 @@ public class ScheduleActivity extends AppCompatActivity {
 
         calendar = Calendar.getInstance();
 
-        switchPumpOn.setOnClickListener(view -> {
-            // Turn on the pump and disable the start button
-            FirebaseDatabase.getInstance().getReference("ScheduleInfo").child("pumpOn").setValue(true);
+        // Set onClickListener for the start button
+        switchPumpOn.setOnClickListener(v -> {
+            isPumpOn = true;
             switchPumpOn.setEnabled(false);
             switchPumpOff.setEnabled(true);
-            setTime.setEnabled(false);
             editTextDuration.setEnabled(false);
-
+            setTime.setEnabled(false);
+            Toast.makeText(ScheduleActivity.this, "Schedule Set", Toast.LENGTH_LONG).show();
+            // Update label or perform any other necessary actions
             saveUserSelections();
-
-            // Start the pump here...
         });
 
-        switchPumpOff.setOnClickListener(view -> {
-            // Turn off the pump and enable the start button
+        // Set onClickListener for the cancel button
+        switchPumpOff.setOnClickListener(v -> {
+            isPumpOn = false;
+            // Update label or perform any other necessary actions
             FirebaseDatabase.getInstance().getReference("ScheduleInfo").child("pumpOn").setValue(false);
             switchPumpOn.setEnabled(true);
             switchPumpOff.setEnabled(false);
-            setTime.setEnabled(true);
             editTextDuration.setEnabled(true);
-            if (alarmManager != null){
+            Toast.makeText(ScheduleActivity.this, "Schedule Canceled", Toast.LENGTH_LONG).show();
+            setTime.setEnabled(true);
+            if (alarmManager != null) {
                 alarmManager.cancel(alarmServiceIntent);
             }
-
-            // Cancel the pump here...
         });
 
-//        // Set an OnCheckedChangeListener for the switch
-//        switchPump.setOnCheckedChangeListener((buttonView, isChecked) -> {
-//            isPumpOn = isChecked;
-//            if (isChecked) {
-//                switchPump.setText("ON"); // Set label to "On" when checked
-//                //musend sa currentstatus with date, time, duration.
-//                saveUserSelections();
-//            } else {
-//                switchPump.setText("OFF"); // Set label to "Off" when unchecked
-//                FirebaseDatabase.getInstance().getReference("ScheduleInfo").child("pumpOn").setValue(false);
-//                if (alarmManager != null){
-//                    alarmManager.cancel(alarmServiceIntent);
-//                }
-//            }
-//        });
 
         // Load the user's selections from the database
         loadUserSelections();
@@ -157,7 +144,8 @@ public class ScheduleActivity extends AppCompatActivity {
                 selectedTime,
                 editTextDuration.getText().toString(),
                 isPumpOn,
-                timeInMilliSeconds
+                timeInMilliSeconds,
+                waterConsumption
         );
 
         databaseReference.setValue(scheduleInfo).addOnCompleteListener(task -> {
@@ -169,14 +157,19 @@ public class ScheduleActivity extends AppCompatActivity {
                         if (snapshot.exists()) {
 
                             alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                            String durationString = editTextDuration.getText().toString();
+                            int duration = Integer.parseInt(durationString);
+                            int waterConsumption = (int) (duration * 33.33);
+
                             serviceIntent.putExtra("duration", editTextDuration.getText().toString());
                             serviceIntent.putExtra("humidity", snapshot.child("humidity").getValue().toString());
                             serviceIntent.putExtra("soilMoisture", snapshot.child("soilMoisture").getValue().toString());
                             serviceIntent.putExtra("temperature", snapshot.child("temperature").getValue().toString());
                             serviceIntent.putExtra("waterLevel", snapshot.child("waterLevel").getValue().toString());
+                            serviceIntent.putExtra("waterConsumption", String.valueOf(waterConsumption));
+
                             serviceIntent.putExtra("time", selectedTime);
                             alarmServiceIntent = PendingIntent.getBroadcast(ScheduleActivity.this, 0, serviceIntent, PendingIntent.FLAG_IMMUTABLE);
-
                             timeInMilliSeconds = calendar.getTimeInMillis();
                             alarmManager.setExact(AlarmManager.RTC_WAKEUP, timeInMilliSeconds, alarmServiceIntent);
                         }

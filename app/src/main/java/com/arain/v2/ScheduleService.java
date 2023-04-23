@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class ScheduleService extends BroadcastReceiver {
-         
+
     @SuppressLint("SimpleDateFormat")
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -31,7 +31,8 @@ public class ScheduleService extends BroadcastReceiver {
                     intent.getStringExtra("humidity"),
                     intent.getStringExtra("soilMoisture"),
                     intent.getStringExtra("temperature"),
-                    intent.getStringExtra("waterLevel")
+                    intent.getStringExtra("waterLevel"),
+                    intent.getStringExtra("waterConsumption")
             );
 
             FirebaseDatabase.getInstance().getReference("Reports")

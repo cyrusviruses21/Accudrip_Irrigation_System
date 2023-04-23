@@ -133,4 +133,20 @@ public class TestingActivity extends AppCompatActivity {
         public long timestamp;
         public int duration;
     }
+
+    //        // Set an OnCheckedChangeListener for the switch
+//        switchPump.setOnCheckedChangeListener((buttonView, isChecked) -> {
+//            isPumpOn = isChecked;
+//            if (isChecked) {
+//                switchPump.setText("ON"); // Set label to "On" when checked
+//                //musend sa currentstatus with date, time, duration.
+//                saveUserSelections();
+//            } else {
+//                switchPump.setText("OFF"); // Set label to "Off" when unchecked
+//                FirebaseDatabase.getInstance().getReference("ScheduleInfo").child("pumpOn").setValue(false);
+//                if (alarmManager != null){
+//                    alarmManager.cancel(alarmServiceIntent);
+//                }
+//            }
+//        });
 }
