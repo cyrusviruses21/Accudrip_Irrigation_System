@@ -160,6 +160,7 @@ public class ScheduleActivity extends AppCompatActivity {
                             String durationString = editTextDuration.getText().toString();
                             int duration = Integer.parseInt(durationString);
                             int waterConsumption = (int) (duration * 33.33);
+                            String waterLevelHolder;
 
                             serviceIntent.putExtra("duration", editTextDuration.getText().toString());
                             serviceIntent.putExtra("humidity", snapshot.child("humidity").getValue().toString());
@@ -167,7 +168,6 @@ public class ScheduleActivity extends AppCompatActivity {
                             serviceIntent.putExtra("temperature", snapshot.child("temperature").getValue().toString());
                             serviceIntent.putExtra("waterLevel", snapshot.child("waterLevel").getValue().toString());
                             serviceIntent.putExtra("waterConsumption", String.valueOf(waterConsumption));
-
                             serviceIntent.putExtra("time", selectedTime);
                             alarmServiceIntent = PendingIntent.getBroadcast(ScheduleActivity.this, 0, serviceIntent, PendingIntent.FLAG_IMMUTABLE);
                             timeInMilliSeconds = calendar.getTimeInMillis();

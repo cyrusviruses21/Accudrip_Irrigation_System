@@ -207,7 +207,7 @@ public class ReportActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.nav_report:
                 break;
             case R.id.nav_data:
-                Intent intent = new Intent(this, WaterReportActivity.class);
+                Intent intent = new Intent(this, WaterConsumptionActivity.class);
                 startActivity(intent);
                 break;
             case R.id.nav_status:

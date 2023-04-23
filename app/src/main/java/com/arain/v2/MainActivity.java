@@ -74,25 +74,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 humidity.setText(status);
 
                 status = dataSnapshot.child("soilMoisture").getValue().toString();
-                soilMoistureValue = Integer.parseInt(status);
-
-                if (soilMoistureValue < soilMoistureThreshold) {
-                    soilMoisture.setText("DRY");
-                } else {
-                    soilMoisture.setText("WET");
-                }
+                soilMoisture.setText(status);
+//                soilMoistureValue = Integer.parseInt(status);
+//                if (soilMoistureValue < soilMoistureThreshold) {
+//                    soilMoisture.setText("DRY");
+//                } else {
+//                    soilMoisture.setText("WET");
+//                }
 
                 //soilMoisture.setText(status);
 
                 status = dataSnapshot.child("waterLevel").getValue().toString();
-                switch (status) {
-                    case "1":
-                        waterLevel.setText("LOW");
-                        break;
-                    default:
-                        waterLevel.setText("HIGH");
-                        break;
-                }
+                waterLevel.setText(status);
+//                switch (status) {
+//                    case "1":
+//                        waterLevel.setText("LOW");
+//                        break;
+//                    default:
+//                        waterLevel.setText("HIGH");
+//                        break;
+//                }
 
                 status = dataSnapshot.child("temperature").getValue().toString();
                 temperature.setText(status);
@@ -144,7 +145,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (menuItem.getItemId()) {
             case R.id.nav_data:
-                Intent intent = new Intent(this, WaterReportActivity.class);
+                Intent intent = new Intent(this, WaterConsumptionActivity.class);
                 startActivity(intent);
                 break;
             case R.id.nav_report:

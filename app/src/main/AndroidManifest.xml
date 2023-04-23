@@ -51,7 +51,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".WaterReportActivity"
+            android:name=".WaterConsumptionActivity"
             android:exported="false"
             android:screenOrientation="portrait">
             <meta-data

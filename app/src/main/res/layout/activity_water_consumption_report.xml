@@ -7,11 +7,11 @@
     android:layout_height="match_parent"
     android:background="@drawable/light"
     android:fitsSystemWindows="true"
-    tools:context=".WaterReportActivity"
+    tools:context=".WaterConsumptionActivity"
     tools:openDrawer="">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/scheduleReports"
+        android:id="@+id/waterConsumptionReports"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -37,6 +37,7 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/baloo"
+                android:textColor="#1c4e80"
                 android:text="Accudrip"
                 android:textSize="40sp"
                 app:layout_constraintEnd_toStartOf="@+id/imageView2"
@@ -50,6 +51,7 @@
                 android:layout_marginStart="32dp"
                 android:fontFamily="@font/aclonica"
                 android:text="Drip and Monitor"
+                android:textColor="#4cb5f5"
                 app:layout_constraintEnd_toStartOf="@+id/imageView2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView3" />

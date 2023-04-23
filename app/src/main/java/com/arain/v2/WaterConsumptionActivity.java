@@ -1,23 +1,13 @@
 package com.arain.v2;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,28 +16,28 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class WaterReportActivity extends AppCompatActivity {
+public class WaterConsumptionActivity extends AppCompatActivity {
 
     //variables
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
-    Adapter adapter;
-    ArrayList<ScheduleReports> list;
+    WaterConsumptionAdapter waterConsumptionAdapter;
+    ArrayList<WaterConsumptionReports> list;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_water_report);
+        setContentView(R.layout.activity_water_consumption_report);
 
-        recyclerView = findViewById(R.id.scheduleReports);
+        recyclerView = findViewById(R.id.waterConsumptionReports);
         databaseReference = FirebaseDatabase.getInstance().getReference("Reports");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         list = new ArrayList<>();
-        adapter = new Adapter(this, list);
-        recyclerView.setAdapter(adapter);
+        waterConsumptionAdapter = new WaterConsumptionAdapter(this, list);
+        recyclerView.setAdapter(waterConsumptionAdapter);
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
@@ -56,11 +46,11 @@ public class WaterReportActivity extends AppCompatActivity {
 
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
 
-                    ScheduleReports scheduleReports = dataSnapshot.getValue(ScheduleReports.class);
-                    list.add(scheduleReports);
+                    WaterConsumptionReports waterConsumptionReports = dataSnapshot.getValue(WaterConsumptionReports.class);
+                    list.add(waterConsumptionReports);
 
                 }
-                adapter.notifyDataSetChanged();
+                waterConsumptionAdapter.notifyDataSetChanged();
 
 
             }
