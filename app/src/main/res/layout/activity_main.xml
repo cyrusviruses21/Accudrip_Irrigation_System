@@ -5,7 +5,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bomb"
+    android:background="@drawable/sheshbro"
     android:fitsSystemWindows="true"
     tools:context=".MainActivity"
     tools:openDrawer="">
@@ -34,12 +34,16 @@
                 android:id="@+id/textView3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/baloo"
-                android:textColor="#1c4e80"
+                android:shadowColor="#808080"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="5"
                 android:text="Accudrip"
-                android:textSize="40sp"
+                android:textColor="#3ac2f0"
+                android:textSize="43sp"
                 app:layout_constraintEnd_toStartOf="@+id/imageView2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/toolbar" />
@@ -50,8 +54,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:fontFamily="@font/aclonica"
+                android:shadowColor="#808080"
+                android:shadowDx="3"
+                android:shadowDy="3"
+                android:shadowRadius="3"
                 android:text="Drip and Monitor"
-                android:textColor="#4cb5f5"
+                android:textColor="#43f082"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toStartOf="@+id/imageView2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -78,17 +87,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView4">
 
-                <androidx.cardview.widget.CardView
+                <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    app:cardElevation="5dp">
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="10dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/white">
+                        android:background="#54e7f7">
 
                         <TextView
                             android:id="@+id/textView5"
@@ -99,7 +109,7 @@
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/baloo"
                             android:text="Humidity "
-                            android:textColor="#8f8c8c"
+                            android:textColor="@color/white"
                             android:textSize="24sp" />
 
                         <TextView
@@ -111,7 +121,7 @@
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/aclonica"
                             android:text="Fetching..."
-                            android:textColor="#88dde3"
+                            android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <ImageView
@@ -132,12 +142,13 @@
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    app:cardElevation="5dp">
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="10dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/white">
+                        android:background="#f75472">
 
                         <TextView
                             android:id="@+id/textView8"
@@ -148,7 +159,7 @@
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/baloo"
                             android:text="Water Level"
-                            android:textColor="#8f8c8c"
+                            android:textColor="@color/white"
                             android:textSize="24sp" />
 
                         <TextView
@@ -160,7 +171,7 @@
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/aclonica"
                             android:text="Fetching..."
-                            android:textColor="#fae34d"
+                            android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <ImageView
@@ -190,12 +201,13 @@
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    app:cardElevation="5dp">
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="10dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/white">
+                        android:background="#f7e754">
 
                         <TextView
                             android:id="@+id/soilM"
@@ -206,7 +218,7 @@
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/baloo"
                             android:text="Soil Moisture "
-                            android:textColor="#8f8c8c"
+                            android:textColor="@color/white"
                             android:textSize="22sp" />
 
                         <TextView
@@ -218,7 +230,7 @@
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/aclonica"
                             android:text="Fetching..."
-                            android:textColor="#0275e0"
+                            android:textColor="@color/black"
                             android:textSize="20sp" />
 
 
@@ -237,12 +249,13 @@
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    app:cardCornerRadius="10dp"
                     app:cardElevation="10dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/white">
+                        android:background="#a44fff">
 
                         <TextView
                             android:id="@+id/manual"
@@ -253,7 +266,7 @@
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/baloo"
                             android:text="Temperature"
-                            android:textColor="#8f8c8c"
+                            android:textColor="@color/white"
                             android:textSize="22sp" />
 
                         <TextView
@@ -265,7 +278,7 @@
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/aclonica"
                             android:text="Fetching..."
-                            android:textColor="#f5427e"
+                            android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <ImageView
@@ -296,45 +309,46 @@
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    app:cardCornerRadius="10dp"
                     app:cardElevation="10dp">
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/white">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#00e0b7">
 
 
-                            <ImageView
-                                android:id="@+id/manualIrrigateIcon"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_alignParentStart="true"
-                                android:layout_alignParentTop="true"
-                                android:layout_alignParentBottom="true"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginStart="30dp"
-                                android:layout_marginLeft="0dp"
-                                android:layout_marginTop="0dp"
-                                android:layout_marginBottom="0dp"
-                                app:srcCompat="@drawable/sprinkler1" />
+                        <ImageView
+                            android:id="@+id/manualIrrigateIcon"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="0dp"
+                            app:srcCompat="@drawable/sprinkler1" />
 
-                            <TextView
-                                android:id="@+id/manualIrrigate"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentTop="true"
-                                android:layout_alignParentBottom="true"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginStart="27dp"
-                                android:layout_marginTop="26dp"
-                                android:layout_marginBottom="25dp"
-                                android:layout_toEndOf="@+id/manualIrrigateIcon"
-                                android:fontFamily="@font/baloo"
-                                android:text="Manual Irrigation"
-                                android:textColor="#8f8c8c"
-                                android:textSize="22sp" />
+                        <TextView
+                            android:id="@+id/manualIrrigate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginStart="27dp"
+                            android:layout_marginTop="26dp"
+                            android:layout_marginBottom="25dp"
+                            android:layout_toEndOf="@+id/manualIrrigateIcon"
+                            android:fontFamily="@font/baloo"
+                            android:text="Manual Irrigation"
+                            android:textColor="@color/white"
+                            android:textSize="22sp" />
 
-                        </RelativeLayout>
+                    </RelativeLayout>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
 

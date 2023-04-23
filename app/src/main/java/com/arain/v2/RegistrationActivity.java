@@ -14,10 +14,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegistrationActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -25,8 +33,10 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     private EditText editTextFullname, editTextPhoneNumber, editTextEmail, editTextPassword;
     private ProgressBar progressBar;
     private Button registerUser;
-
     private FirebaseAuth mAuth;
+    private FirebaseFirestore fStore;
+
+    private boolean valid = true;
 
 
     @Override
@@ -35,6 +45,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_registration);
 
         mAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
 
         banner = (TextView) findViewById(R.id.banner);
         banner.setOnClickListener(this);
@@ -51,8 +62,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         editTextPassword = (EditText) findViewById(R.id.password);
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-    }
-
+}
 
     @Override
     public void onClick(View view) {
@@ -129,6 +139,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                                     if (task1.isSuccessful()) {
                                         Toast.makeText(RegistrationActivity.this, "Registered Successfully", Toast.LENGTH_LONG).show();
                                         progressBar.setVisibility(View.GONE);
+                                        startActivity(new Intent(this, LoginActivity.class));
 
                                         //redirect to Login layout
                                         registerUser.setOnClickListener(v -> startActivity(new Intent(RegistrationActivity.this, LoginActivity.class)));

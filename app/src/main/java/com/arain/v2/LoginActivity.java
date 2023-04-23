@@ -3,6 +3,7 @@ package com.arain.v2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
@@ -15,13 +16,17 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener
-{
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView register, forgotPassword;
     private EditText editTextEmail, editTextPassword;
@@ -29,22 +34,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
+    private boolean valid = true;
+    private FirebaseFirestore fStore;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        /*ConstraintLayout constraintLayout = findViewById(R.id.gradientnachuy);
-
-        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
-        animationDrawable.setEnterFadeDuration(100000);
-        animationDrawable.setExitFadeDuration(100000);
-        animationDrawable.start();*/
-
-        /*Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);*/
 
         register = (TextView) findViewById(R.id.register);
         register.setOnClickListener(this);
@@ -59,11 +55,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
-        mAuth = FirebaseAuth.getInstance();
-
         forgotPassword = (TextView) findViewById(R.id.forgotPassword);
         forgotPassword.setOnClickListener(this);
+
+        mAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
     }
+
 
     @Override
     public void onClick(View view)
@@ -128,6 +126,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if (user.isEmailVerified()) {
                     //redirect to user status
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
+
                 } else {
                     user.sendEmailVerification();
                     Toast.makeText(LoginActivity.this, "Check your email to verify your account!", Toast.LENGTH_LONG).show();
