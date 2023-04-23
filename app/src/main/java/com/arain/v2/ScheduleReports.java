@@ -1,6 +1,6 @@
 package com.arain.v2;
 
-public class ScheduleReports {
+public class  ScheduleReports {
 
     String date, duration, humidity, soilMoisture, temperature, time, waterLevel;
 

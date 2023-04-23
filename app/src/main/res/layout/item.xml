@@ -5,11 +5,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="8dp"
     app:cardCornerRadius="8dp"
-    android:layout_margin="16dp">
+    android:layout_margin="16dp"
+    android:background="@drawable/light">
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="330dp"
+        android:layout_height="250dp"
         android:layout_marginLeft="6dp"
         android:background="@drawable/headersam"
         android:orientation="vertical">
@@ -27,7 +28,7 @@
                 android:fontFamily="@font/baloo"
                 android:text="Date :"
                 android:textColor="#ff6961"
-                android:textSize="26sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -38,7 +39,7 @@
                 android:fontFamily="@font/baloo"
                 android:text="22-Apr-2023"
                 android:textColor="@color/black"
-                android:textSize="26sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -56,7 +57,7 @@
                 android:fontFamily="@font/baloo"
                 android:text="Duration : "
                 android:textColor="#ffb480"
-                android:textSize="26sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -66,7 +67,7 @@
                 android:fontFamily="@font/baloo"
                 android:text="10"
                 android:textColor="@color/black"
-                android:textSize="26sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -84,7 +85,7 @@
                 android:fontFamily="@font/baloo"
                 android:text="Humidity : "
                 android:textColor="#42d6a4"
-                android:textSize="26sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -94,7 +95,7 @@
                 android:fontFamily="@font/baloo"
                 android:text="65"
                 android:textColor="@color/black"
-                android:textSize="26sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -112,7 +113,7 @@
                 android:fontFamily="@font/baloo"
                 android:text="Soil Moisture : "
                 android:textColor="#c780e8"
-                android:textSize="26sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -122,7 +123,7 @@
                 android:fontFamily="@font/baloo"
                 android:text="65"
                 android:textColor="@color/black"
-                android:textSize="26sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -140,7 +141,7 @@
                 android:fontFamily="@font/baloo"
                 android:text="Temperature : "
                 android:textColor="#08cad1"
-                android:textSize="26sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -150,7 +151,7 @@
                 android:fontFamily="@font/baloo"
                 android:text="65"
                 android:textColor="@color/black"
-                android:textSize="26sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -168,7 +169,7 @@
                 android:fontFamily="@font/baloo"
                 android:text="Start Time : "
                 android:textColor="#59adf6"
-                android:textSize="26sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -178,38 +179,11 @@
                 android:fontFamily="@font/baloo"
                 android:text="17:36"
                 android:textColor="@color/black"
-                android:textSize="26sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginLeft="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/baloo"
-                android:text="Water Consumption (ml) : "
-                android:textColor="#ffb480"
-                android:textSize="26sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/waterConsumption"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/baloo"
-                android:text="100"
-                android:textColor="@color/black"
-                android:textSize="26sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -224,7 +198,7 @@
                 android:fontFamily="@font/baloo"
                 android:text="Water Level : "
                 android:textColor="#f8f38d"
-                android:textSize="26sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -234,7 +208,7 @@
                 android:fontFamily="@font/baloo"
                 android:text="HIGH"
                 android:textColor="@color/black"
-                android:textSize="26sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
         </LinearLayout>

@@ -7,10 +7,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -22,35 +20,27 @@ import com.google.firebase.database.ValueEventListener;
 public class ProfileActivity extends AppCompatActivity
 {
 
-    private FirebaseUser user;
-    private DatabaseReference reference;
-
-    private String userID;
-
-    private Button logout;
-    private ImageButton back;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        back = (ImageButton) findViewById(R.id.back);
-        logout = (Button) findViewById(R.id.logout);
+        ImageButton back = (ImageButton) findViewById(R.id.back);
+        Button logout = (Button) findViewById(R.id.logout);
 
         back.setOnClickListener(v -> startActivity(new Intent(ProfileActivity.this, MainActivity.class)));
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finishActivity(this, LoginActivity.class);
+                finishActivity();
             }
         });
 
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users");
-        userID = user.getUid();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        String userID = user.getUid();
 
         final TextView nameDisplayTextView = (TextView) findViewById(R.id.nameDisplay);
         final TextView fullNameTextView = (TextView) findViewById(R.id.fullName);
@@ -81,8 +71,8 @@ public class ProfileActivity extends AppCompatActivity
         });
     }
 
-    private void finishActivity(View.OnClickListener onClickListener, Class<LoginActivity> mainActivityClass) {
-            startActivity(new Intent(this, LoginActivity.class));
-            finish();
+    private void finishActivity() {
+        startActivity(new Intent(this, LoginActivity.class));
+        finish();
     }
 }

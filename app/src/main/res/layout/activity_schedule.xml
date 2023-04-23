@@ -40,21 +40,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/durationTitleSecond"
                 tools:ignore="UseSwitchCompatOrMaterialXml" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:layout_margin="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.202"
-                app:layout_constraintStart_toEndOf="@+id/switchPumpOn"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.621"
-                app:srcCompat="@drawable/humidity"
-                app:tint="@android:color/white" />
-
             <Button
                 android:id="@+id/switchPumpOff"
                 android:layout_width="150dp"

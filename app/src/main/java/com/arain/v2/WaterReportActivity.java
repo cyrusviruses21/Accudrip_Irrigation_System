@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,14 +18,21 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-public class WaterReportActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
+import java.util.ArrayList;
+
+public class WaterReportActivity extends AppCompatActivity {
 
     //variables
-    private TextView textView3;
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
-    Toolbar toolbar;
+    RecyclerView recyclerView;
+    DatabaseReference databaseReference;
+    Adapter adapter;
+    ArrayList<ScheduleReports> list;
 
 
     @Override
@@ -30,83 +40,37 @@ public class WaterReportActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_water_report);
 
-        textView3 = (TextView) findViewById(R.id.textView3);
-        textView3.setOnClickListener(this);
+        recyclerView = findViewById(R.id.scheduleReports);
+        databaseReference = FirebaseDatabase.getInstance().getReference("Reports");
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        //hooks
-        drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
-        toolbar = findViewById(R.id.toolbar);
+        list = new ArrayList<>();
+        adapter = new Adapter(this, list);
+        recyclerView.setAdapter(adapter);
 
-        //toolbar
-        setSupportActionBar(toolbar);
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
 
-        //Navigation Drawer Menu
-        Menu menu = navigationView.getMenu();
-        menu.findItem(R.id.nav_logout).setVisible(true);
-        menu.findItem(R.id.nav_profile).setVisible(true);
+                    ScheduleReports scheduleReports = dataSnapshot.getValue(ScheduleReports.class);
+                    list.add(scheduleReports);
 
-        navigationView.bringToFront();
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-
-        navigationView.setNavigationItemSelectedListener(this);
-
-        navigationView.setCheckedItem(R.id.nav_data);
-    }
-
-    @Override
-    public void onBackPressed() {
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        }
-        else {
-            super.onBackPressed();
-        }
-
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.textView3:
-                startActivity(new Intent(this, MainActivity.class));
-                break;
+                }
+                adapter.notifyDataSetChanged();
 
 
-        }
-    }
+            }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuitem) {
-        switch (menuitem.getItemId()){
-            case R.id.nav_data:
-                break;
-            case R.id.nav_status:
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.nav_report:
-                Intent intent1 = new Intent(this, ReportsActivity.class);
-                startActivity(intent1);
-                break;
-            case R.id.nav_profile:
-                Intent intent2 = new Intent(this, ProfileActivity.class);
-                startActivity(intent2);
-                break;
-            case R.id.nav_logout:
-                Intent intent3 = new Intent(this, LoginActivity.class);
-                startActivity(intent3);
-                break;
-            case R.id.nav_schedules:
-                Intent intent4 = new Intent(this, ScheduleActivity.class);
-                startActivity(intent4);
-                break;
-        }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-        drawerLayout.closeDrawer(GravityCompat.START);
-        return true;
+            }
+        });
+
+
     }
 }
