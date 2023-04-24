@@ -74,26 +74,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 humidity.setText(status);
 
                 status = dataSnapshot.child("soilMoisture").getValue().toString();
-                soilMoisture.setText(status);
-//                soilMoistureValue = Integer.parseInt(status);
-//                if (soilMoistureValue < soilMoistureThreshold) {
-//                    soilMoisture.setText("DRY");
-//                } else {
-//                    soilMoisture.setText("WET");
-//                }
+//                soilMoisture.setText(status);
+                soilMoistureValue = Integer.parseInt(status);
+                if (soilMoistureValue < soilMoistureThreshold) {
+                    soilMoisture.setText("DRY");
+                } else {
+                    soilMoisture.setText("WET");
+                }
 
                 //soilMoisture.setText(status);
 
                 status = dataSnapshot.child("waterLevel").getValue().toString();
-                waterLevel.setText(status);
-//                switch (status) {
-//                    case "1":
-//                        waterLevel.setText("LOW");
-//                        break;
-//                    default:
-//                        waterLevel.setText("HIGH");
-//                        break;
-//                }
+                //waterLevel.setText(status);
+                switch (status) {
+                    case "1":
+                        waterLevel.setText("LOW");
+                        break;
+                    default:
+                        waterLevel.setText("HIGH");
+                        break;
+                }
 
                 status = dataSnapshot.child("temperature").getValue().toString();
                 temperature.setText(status);
