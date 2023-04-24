@@ -20,6 +20,9 @@
             android:name=".AdminActivity"
             android:exported="false" />
         <activity
+            android:name=".ProfileActivity2"
+            android:exported="false" />
+        <activity
             android:name=".ReportsActivity"
             android:exported="false" />
         <activity

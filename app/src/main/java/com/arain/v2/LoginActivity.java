@@ -3,7 +3,6 @@ package com.arain.v2;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
@@ -12,18 +11,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -31,6 +22,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private TextView register, forgotPassword;
     private EditText editTextEmail, editTextPassword;
     private ImageButton signIn;
+
+    private boolean flag;
 
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
@@ -49,7 +42,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         signIn.setOnClickListener(this);
 
         editTextEmail = (EditText) findViewById(R.id.email);
-        editTextEmail.setText("lopezcyruslouie@gmail.com");
+        editTextEmail.setText("cyruslouielopez@gmail.com");
         editTextPassword = (EditText) findViewById(R.id.password);
         editTextPassword.setText("12345678");
 
@@ -88,6 +81,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
 
+        if(email.equals("lopezcyruslouie@gmail.com"))
+        {
+            flag = true;
+        }
+        else{
+            flag = false;
+        }
+
         if (email.isEmpty())
         {
             editTextEmail.setError("Email is required!");
@@ -125,7 +126,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                 if (user.isEmailVerified()) {
                     //redirect to user status
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    if(flag == true){
+                        startActivity(new Intent(LoginActivity.this, AdminActivity.class));
+                    }else{
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    }
 
                 } else {
                     user.sendEmailVerification();

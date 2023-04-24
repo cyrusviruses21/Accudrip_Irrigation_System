@@ -39,6 +39,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     private boolean valid = true;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,6 +90,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         String password = editTextPassword.getText().toString().trim();
         String fullName = editTextFullname.getText().toString().trim();
         String phoneNumber = editTextPhoneNumber.getText().toString().trim();
+        String role = "user";
 
         if (fullName.isEmpty()) {
             editTextFullname.setError("Full name is required!");
@@ -130,11 +133,15 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 .addOnCompleteListener(task -> {
 
                     if (task.isSuccessful()) {
-                        UserInfo user = new UserInfo(fullName, phoneNumber, email);
+                        HashMap<String, Object> userMap = new HashMap<>();
+                        userMap.put("fullName", fullName);
+                        userMap.put("phoneNumber", phoneNumber);
+                        userMap.put("email", email);
+                        userMap.put("User", role);
 
                         FirebaseDatabase.getInstance().getReference("Users")
                                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                .setValue(user).addOnCompleteListener(task1 -> {
+                                .setValue(userMap).addOnCompleteListener(task1 -> {
 
                                     if (task1.isSuccessful()) {
                                         Toast.makeText(RegistrationActivity.this, "Registered Successfully", Toast.LENGTH_LONG).show();

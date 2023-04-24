@@ -9,25 +9,25 @@
     android:background="@drawable/headersam">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="371dp"
         android:layout_height="250dp"
         android:layout_marginLeft="6dp"
-        android:background="@drawable/headersam"
+        android:background="@drawable/reports"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginLeft="10dp">
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo"
                 android:text="Date :"
-                android:textColor="#ff6961"
+                android:textColor="#ffffff"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -35,10 +35,10 @@
                 android:id="@+id/schedDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="100dp"
                 android:fontFamily="@font/baloo"
                 android:text="22-Apr-2023"
-                android:textColor="@color/black"
+                android:textColor="#ffe45c"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
@@ -48,15 +48,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginLeft="10dp">
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo"
                 android:text="Duration : "
-                android:textColor="#ffb480"
+                android:textColor="#ffffff"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -66,7 +66,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo"
                 android:text="10"
-                android:textColor="@color/black"
+                android:layout_marginLeft="100dp"
+                android:textColor="#ffe45c"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
@@ -76,15 +77,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginLeft="10dp">
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo"
                 android:text="Humidity : "
-                android:textColor="#42d6a4"
+                android:textColor="#ffffff"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -94,7 +95,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo"
                 android:text="65"
-                android:textColor="@color/black"
+                android:layout_marginLeft="98dp"
+                android:textColor="#ffe45c"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
@@ -104,15 +106,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginLeft="10dp">
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo"
                 android:text="Soil Moisture : "
-                android:textColor="#c780e8"
+                android:textColor="#ffffff"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -122,7 +124,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo"
                 android:text="65"
-                android:textColor="@color/black"
+                android:layout_marginLeft="62dp"
+                android:textColor="#ffe45c"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
@@ -132,15 +135,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginLeft="10dp">
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo"
                 android:text="Temperature : "
-                android:textColor="#08cad1"
+                android:textColor="#ffffff"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -150,7 +153,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo"
                 android:text="65"
-                android:textColor="@color/black"
+                android:textColor="#ffe45c"
+                android:layout_marginLeft="64dp"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
@@ -160,15 +164,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginLeft="10dp">
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo"
                 android:text="Start Time : "
-                android:textColor="#59adf6"
+                android:textColor="#ffffff"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -178,7 +182,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo"
                 android:text="17:36"
-                android:textColor="@color/black"
+                android:textColor="#ffe45c"
+                android:layout_marginLeft="87.5dp"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
@@ -189,15 +194,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginLeft="10dp">
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo"
                 android:text="Water Level : "
-                android:textColor="#f8f38d"
+                android:textColor="#ffffff"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -207,7 +212,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo"
                 android:text="HIGH"
-                android:textColor="@color/black"
+                android:layout_marginLeft="74dp"
+                android:textColor="#ffe45c"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 

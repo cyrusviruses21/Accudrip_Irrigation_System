@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent1);
                 break;
             case R.id.nav_profile:
-                Intent intent2 = new Intent(this, ProfileActivity.class);
+                Intent intent2 = new Intent(this, ProfileActivity2.class);
                 startActivity(intent2);
                 break;
             case R.id.nav_logout:
