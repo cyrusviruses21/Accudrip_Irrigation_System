@@ -19,7 +19,7 @@
         android:fontFamily="@font/aclonica"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="#e8b600"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

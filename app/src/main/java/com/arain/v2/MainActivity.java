@@ -24,9 +24,6 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
-    //variables
-    private TextView textView3;
-    private ImageView manualIrrigateIcon;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
@@ -41,9 +38,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        textView3 = (TextView) findViewById(R.id.textView3);
+        //variables
+        TextView textView3 = (TextView) findViewById(R.id.textView3);
         textView3.setOnClickListener(this);
-        manualIrrigateIcon = (ImageView) findViewById(R.id.manualIrrigateIcon);
+        ImageView manualIrrigateIcon = (ImageView) findViewById(R.id.manualIrrigateIcon);
         manualIrrigateIcon.setOnClickListener(this);
         manualIrrigate = (TextView) findViewById(R.id.manualIrrigate);
         manualIrrigate.setOnClickListener(this);
@@ -69,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dref = FirebaseDatabase.getInstance().getReference();
         dref.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 status = dataSnapshot.child("humidity").getValue().toString();
                 humidity.setText(status);
 

@@ -16,13 +16,13 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:background="#f7e754"
+            android:background="@drawable/kaniiiii"
             android:padding="20dp">
 
             <ImageView
                 android:id="@+id/profile_image"
                 android:layout_width="100dp"
-                android:layout_height="150dp"
+                android:layout_height="70dp"
                 android:layout_centerVertical="true"
                 app:srcCompat="@drawable/chares" />
 
@@ -31,16 +31,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@id/profile_image"
                 android:fontFamily="@font/baloo"
                 android:shadowColor="#808080"
-                android:shadowDx="5"
-                android:shadowDy="5"
+                android:shadowDx="8"
+                android:shadowDy="8"
                 android:shadowRadius="5"
                 android:text="Accudrip"
                 android:includeFontPadding="false"
-                android:textColor="#3ac2f0"
+                android:textColor="@color/white"
                 android:textSize="50sp" />
 
             <TextView
@@ -48,16 +47,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/fullname_field"
-                android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@id/profile_image"
                 android:includeFontPadding="false"
                 android:fontFamily="@font/aclonica"
                 android:shadowColor="#808080"
-                android:shadowDx="3"
-                android:shadowDy="3"
+                android:shadowDx="5"
+                android:shadowDy="7"
                 android:shadowRadius="3"
                 android:text="Drip and Monitor"
-                android:textColor="#43f082"
+                android:textColor="@color/white"
                 android:textSize="20sp" />
         </RelativeLayout>
 
@@ -72,7 +70,7 @@
                 android:layout_height="125dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardBackgroundColor="#f7e754"
+                app:cardBackgroundColor="#59eff7"
                 app:cardElevation="10dp">
 
                 <RelativeLayout
@@ -120,7 +118,7 @@
                 android:layout_height="125dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardBackgroundColor="#f7e754"
+                app:cardBackgroundColor="#a5fac4"
                 app:cardElevation="10dp">
 
                 <RelativeLayout
@@ -144,7 +142,7 @@
                         android:inputType="number"
                         android:textColor="#454444"
                         android:textColorHint="#454444"
-                        android:textSize="40sp" />
+                        android:textSize="30sp" />
 
                     <TextView
                         android:id="@+id/booking_desc"
@@ -155,7 +153,7 @@
                         android:fontFamily="@font/baloo"
                         android:includeFontPadding="false"
                         android:text="Duration"
-                        android:textSize="14sp" />
+                        android:textSize="20sp" />
 
 
                 </RelativeLayout>
@@ -177,16 +175,18 @@
                 android:id="@+id/switchPumpOn"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
-                android:backgroundTint="#40f5da"
+                android:backgroundTint="#18ccd9"
                 android:fontFamily="@font/baloo"
+                android:textSize="25sp"
                 android:text="START" />
 
             <Button
                 android:id="@+id/switchPumpOff"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
-                android:backgroundTint="#d81159"
+                android:backgroundTint="#fa6e6e"
                 android:fontFamily="@font/baloo"
+                android:textSize="20sp"
                 android:text="cancel" />
 
 

@@ -8,7 +8,7 @@ import com.google.firebase.database.Query;
 import java.util.HashMap;
 
 public class DOAUsers {
-    private DatabaseReference databaseReference;
+    private final DatabaseReference databaseReference;
 
     public DOAUsers() {
         FirebaseDatabase db = FirebaseDatabase.getInstance();

@@ -1,6 +1,7 @@
 
 package com.arain.v2;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -19,26 +20,24 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView register, forgotPassword;
     private EditText editTextEmail, editTextPassword;
-    private ImageButton signIn;
 
     private boolean flag;
 
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
-    private boolean valid = true;
-    private FirebaseFirestore fStore;
+    private final boolean valid = true;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        register = (TextView) findViewById(R.id.register);
+        TextView register = (TextView) findViewById(R.id.register);
         register.setOnClickListener(this);
 
-        signIn = (ImageButton) findViewById(R.id.signIn);
+        ImageButton signIn = (ImageButton) findViewById(R.id.signIn);
         signIn.setOnClickListener(this);
 
         editTextEmail = (EditText) findViewById(R.id.email);
@@ -48,14 +47,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
-        forgotPassword = (TextView) findViewById(R.id.forgotPassword);
+        TextView forgotPassword = (TextView) findViewById(R.id.forgotPassword);
         forgotPassword.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
+        FirebaseFirestore fStore = FirebaseFirestore.getInstance();
     }
 
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view)
     {

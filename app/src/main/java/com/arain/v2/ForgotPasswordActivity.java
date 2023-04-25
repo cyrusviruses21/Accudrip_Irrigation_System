@@ -1,8 +1,5 @@
 package com.arain.v2;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -13,16 +10,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ForgotPasswordActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText emailEditText;
-    private Button resetPasswordButton, backButton;
     private ProgressBar progressBar;
-    private TextView banner;
 
     FirebaseAuth auth;
 
@@ -31,14 +26,14 @@ public class ForgotPasswordActivity extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
 
-        banner = (TextView) findViewById(R.id.banner);
+        TextView banner = (TextView) findViewById(R.id.banner);
         banner.setOnClickListener(this);
 
         emailEditText = (EditText) findViewById(R.id.email);
-        resetPasswordButton = (Button) findViewById(R.id.resetPassword);
+        Button resetPasswordButton = (Button) findViewById(R.id.resetPassword);
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        backButton = (Button) findViewById(R.id.back);
+        Button backButton = (Button) findViewById(R.id.back);
         auth = FirebaseAuth.getInstance();
 
         backButton.setOnClickListener(v -> startActivity(new Intent(ForgotPasswordActivity.this, LoginActivity.class)));
@@ -48,11 +43,8 @@ public class ForgotPasswordActivity extends AppCompatActivity implements View.On
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-
-            case R.id.banner:
-                startActivity(new Intent(this, LoginActivity.class));
-                break;
+        if (view.getId() == R.id.banner) {
+            startActivity(new Intent(this, LoginActivity.class));
         }
     }
 

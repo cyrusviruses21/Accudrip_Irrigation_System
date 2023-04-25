@@ -1,5 +1,6 @@
 package com.arain.v2;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.HashMap;
 
 public class AdminActivity extends AppCompatActivity {
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,12 +46,8 @@ public class AdminActivity extends AppCompatActivity {
             Users users = new Users(edit_name.getText().toString(), edit_email.getText().toString(), edit_phoneNumber.getText().toString());
             if (users_edit == null) {
                 doaUsers.add(users).addOnSuccessListener(suc ->
-                {
-                    Toast.makeText(this, "Record is inserted", Toast.LENGTH_SHORT).show();
-                }).addOnFailureListener(er ->
-                {
-                    Toast.makeText(this, " " + er.getMessage(), Toast.LENGTH_SHORT).show();
-                });
+                        Toast.makeText(this, "Record is inserted", Toast.LENGTH_SHORT).show()).addOnFailureListener(er ->
+                        Toast.makeText(this, " " + er.getMessage(), Toast.LENGTH_SHORT).show());
             } else {
                 HashMap<String, Object> hashMap = new HashMap<>();
                 hashMap.put("fullName", edit_name.getText().toString());
@@ -60,9 +58,7 @@ public class AdminActivity extends AppCompatActivity {
                     Toast.makeText(this, "Record is updated", Toast.LENGTH_SHORT).show();
                     finish();
                 }).addOnFailureListener(er ->
-                {
-                    Toast.makeText(this, "" + er.getMessage(), Toast.LENGTH_SHORT).show();
-                });
+                        Toast.makeText(this, "" + er.getMessage(), Toast.LENGTH_SHORT).show());
 
             }
         });
