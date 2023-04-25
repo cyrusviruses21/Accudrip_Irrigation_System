@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/btn_open"
         android:backgroundTint="#54fffc"
-        android:text="Users"/>
+        android:text="Farmers"/>
 
 
 

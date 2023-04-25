@@ -9,11 +9,11 @@
         <item
             android:id="@+id/nav_report"
             android:icon="@drawable/report_icon"
-            android:title="Report" />
+            android:title="Reports" />
         <item
             android:id="@+id/nav_data"
             android:icon="@drawable/home_icon"
-            android:title="Data" />
+            android:title="Water Consumption" />
     </group>
 
     <item android:title="Schedule">

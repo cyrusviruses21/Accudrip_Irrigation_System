@@ -120,7 +120,7 @@
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/aclonica"
-                            android:text="Fetching..."
+                            android:text="..."
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -170,7 +170,7 @@
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/aclonica"
-                            android:text="Fetching..."
+                            android:text="..."
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -229,7 +229,7 @@
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/aclonica"
-                            android:text="Fetching..."
+                            android:text="..."
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
@@ -277,7 +277,7 @@
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/aclonica"
-                            android:text="Fetching..."
+                            android:text="..."
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 

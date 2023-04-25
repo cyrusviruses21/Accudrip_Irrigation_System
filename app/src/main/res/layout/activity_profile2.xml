@@ -4,18 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#edebeb"
     tools:context=".ProfileActivity2">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#edebeb">
+        android:background="#edebeb"
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:background="#f7e754"
+            android:background="@drawable/light"
             android:padding="20dp">
 
             <ImageView
@@ -26,7 +27,7 @@
                 app:srcCompat="@drawable/proffff" />
 
             <TextView
-                android:id="@+id/fullname_field"
+                android:id="@+id/nameDisplay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -38,10 +39,10 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/email_field"
+                android:id="@+id/emailDisplay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/fullname_field"
+                android:layout_below="@id/nameDisplay"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@id/profile_image"
                 android:fontFamily="@font/baloo"
@@ -63,7 +64,7 @@
                 android:layout_height="125dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardBackgroundColor="#f7e754"
+                app:cardBackgroundColor="#59eff7"
                 app:cardElevation="10dp">
 
                 <RelativeLayout
@@ -75,27 +76,29 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_centerHorizontal="true"
-                        app:srcCompat="@drawable/proffff" />
+                        app:srcCompat="@drawable/time" />
 
                     <TextView
-                        android:id="@+id/payment_label"
+                        android:id="@+id/time_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:fontFamily="@font/baloo"
                         android:includeFontPadding="false"
-                        android:text="$1,000,000.00"
+                        android:text="..."
+                        android:textColor="@color/white"
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/payment_desc"
+                        android:id="@+id/time_desc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/payment_label"
+                        android:layout_below="@id/time_label"
                         android:layout_centerInParent="true"
                         android:fontFamily="@font/baloo"
                         android:includeFontPadding="false"
-                        android:text="Balance"
+                        android:textColor="@color/white"
+                        android:text="Schedule"
                         android:textSize="14sp" />
 
 
@@ -109,7 +112,7 @@
                 android:layout_height="125dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardBackgroundColor="#f7e754"
+                app:cardBackgroundColor="#a5fac4"
                 app:cardElevation="10dp">
 
                 <RelativeLayout
@@ -121,28 +124,43 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_centerHorizontal="true"
-                        app:srcCompat="@drawable/proffff" />
+                        app:srcCompat="@drawable/baseline_water_drop_24" />
 
                     <TextView
-                        android:id="@+id/booking_label"
+                        android:id="@+id/total_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:fontFamily="@font/baloo"
                         android:includeFontPadding="false"
-                        android:text="Accudrip"
+                        android:text="..."
+                        android:textColor="@color/white"
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/booking_desc"
+                        android:id="@+id/water_desc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/booking_label"
+                        android:layout_below="@id/total_label"
                         android:layout_centerHorizontal="true"
                         android:fontFamily="@font/baloo"
                         android:includeFontPadding="false"
-                        android:text="CEO"
-                        android:textSize="20sp" />
+                        android:text="Monthly Water"
+                        android:textColor="@color/white"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/water_desc2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/total_label"
+                        android:layout_marginTop="12dp"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/baloo"
+                        android:includeFontPadding="false"
+                        android:text="Consumption (ml)"
+                        android:textColor="@color/white"
+                        android:textSize="10sp" />
 
 
                 </RelativeLayout>
@@ -156,6 +174,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:background="#edebeb"
             android:padding="20dp">
 
             <com.google.android.material.textfield.TextInputLayout
@@ -163,16 +182,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:textColorHint="@color/black"
-                android:hint="Full Name">
+                android:hint="Full Name"
+                android:textColorHint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/fullName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:fontFamily="@font/baloo"
-                    android:textColor="@color/black"
-                    android:text="Cyrus Louie Lopez" />
+                    android:text="Loading..."
+                    android:textColor="@color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -181,16 +201,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:textColorHint="@color/black"
-                android:hint="Email">
+                android:hint="Email"
+                android:textColorHint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="cyruslouielopez@gmail.com"
+                    android:background="@color/white"
                     android:fontFamily="@font/baloo"
-                    android:textColor="@color/black"
-                    android:background="@color/white"/>
+                    android:text="Loading..."
+                    android:textColor="@color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -199,41 +220,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:textColorHint="@color/black"
-                android:hint="Phone Number">
+                android:hint="Phone Number"
+                android:textColorHint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/phoneNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="09229739142"
-                    android:textColor="@color/black"
+                    android:background="@color/white"
                     android:fontFamily="@font/baloo"
-                    android:background="@color/white"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/password_profile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:textColorHint="@color/black"
-                android:hint="Password">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="12345678"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/baloo"
-                    android:background="@color/white"/>
+                    android:text="Loading..."
+                    android:textColor="@color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#f7e754"
+                android:backgroundTint="#fa7850"
                 android:fontFamily="@font/baloo"
                 android:text="Update" />
 

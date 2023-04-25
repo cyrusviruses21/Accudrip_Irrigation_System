@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -103,10 +102,13 @@ public class ScheduleActivity extends AppCompatActivity {
             // Format the selected time as a string and set it in the UI
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
             calendar.set(Calendar.MINUTE, minuteOfDay);
-            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.US);
+            SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a", Locale.US);
             selectedTime = sdf.format(calendar.getTime());
             setTime.setText(selectedTime);
-        }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true);
+        },
+                calendar.get(Calendar.HOUR_OF_DAY),
+                calendar.get(Calendar.MINUTE),
+                false);
         timePickerDialog.show();
     }
 

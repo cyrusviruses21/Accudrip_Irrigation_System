@@ -7,6 +7,8 @@ public class ScheduleInfo {
     public Long timeInMilliSeconds;
     private String waterConsumption;
 
+    public ScheduleInfo() {}
+
     public ScheduleInfo(String time, String duration, Boolean pumpOn, Long timeInMilliSeconds, String waterConsumption) {
         this.time = time;
         this.duration = duration;
