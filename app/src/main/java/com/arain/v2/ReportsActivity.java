@@ -1,12 +1,11 @@
 package com.arain.v2;
 
+import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.annotation.SuppressLint;
-import android.os.Bundle;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,20 +36,17 @@ public class ReportsActivity extends AppCompatActivity {
         adapter = new Adapter(this, list);
         recyclerView.setAdapter(adapter);
 
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @SuppressLint("NotifyDataSetChanged")
+        databaseReference.orderByChild("date").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
+                ArrayList<ScheduleReports> tempList = new ArrayList<>();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-
                     ScheduleReports scheduleReports = dataSnapshot.getValue(ScheduleReports.class);
-                    list.add(scheduleReports);
-
+                    tempList.add(0, scheduleReports); // add at the beginning of the list for descending order
                 }
+                list.clear();
+                list.addAll(tempList);
                 adapter.notifyDataSetChanged();
-
-
             }
 
             @Override
@@ -58,6 +54,7 @@ public class ReportsActivity extends AppCompatActivity {
 
             }
         });
+
 
     }
 }

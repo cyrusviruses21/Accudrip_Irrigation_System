@@ -23,6 +23,8 @@ public class AdminActivity extends AppCompatActivity {
         final EditText edit_phoneNumber = findViewById(R.id.edit_phoneNumber);
         Button btn = findViewById(R.id.btn_submit);
         Button btn_open = findViewById(R.id.btn_open);
+
+        //Open button to the farmers accounts
         btn_open.setOnClickListener(v ->
         {
             Intent intent = new Intent(AdminActivity.this, RVActivity.class);
