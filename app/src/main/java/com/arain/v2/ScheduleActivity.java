@@ -56,9 +56,8 @@ public class ScheduleActivity extends AppCompatActivity {
         // Initialize the Firebase database
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("ScheduleInfo");
-
+        DatabaseReference firebase = firebaseDatabase.getReference("soilMoisture");
         serviceIntent = new Intent(ScheduleActivity.this, ScheduleService.class);
-
         calendar = Calendar.getInstance();
 
         // Set onClickListener for the start button
@@ -151,6 +150,7 @@ public class ScheduleActivity extends AppCompatActivity {
         );
 
         databaseReference.setValue(scheduleInfo).addOnCompleteListener(task -> {
+
             if (task.isSuccessful()) {
                 FirebaseDatabase.getInstance().getReference().addListenerForSingleValueEvent(new ValueEventListener() {
                     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -158,25 +158,33 @@ public class ScheduleActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
 
-                            alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-                            String durationString = editTextDuration.getText().toString();
-                            int duration = Integer.parseInt(durationString);
-                            int waterConsumption = (int) (duration * 33.33);
-                            String waterLevelHolder;
+                            int soilMoisture = Integer.parseInt(snapshot.child("soilMoisture").getValue().toString());
+                            int soilMoistureThreshold = 100; // set the threshold value here
 
-                            serviceIntent.putExtra("duration", editTextDuration.getText().toString());
-                            serviceIntent.putExtra("humidity", snapshot.child("humidity").getValue().toString());
-                            serviceIntent.putExtra("soilMoisture", snapshot.child("soilMoisture").getValue().toString());
-                            serviceIntent.putExtra("temperature", snapshot.child("temperature").getValue().toString());
-                            serviceIntent.putExtra("waterLevel", snapshot.child("waterLevel").getValue().toString());
-                            serviceIntent.putExtra("waterConsumption", String.valueOf(waterConsumption));
-                            serviceIntent.putExtra("time", selectedTime);
-                            alarmServiceIntent = PendingIntent.getBroadcast(ScheduleActivity.this, 0, serviceIntent, PendingIntent.FLAG_IMMUTABLE);
-                            timeInMilliSeconds = calendar.getTimeInMillis();
-                            alarmManager.setExact(AlarmManager.RTC_WAKEUP, timeInMilliSeconds, alarmServiceIntent);
+                            if (soilMoisture > soilMoistureThreshold) {
+                                // soil moisture is too high, cancel the alarm
+                                alarmManager.cancel(alarmServiceIntent);
+                                Toast.makeText(ScheduleActivity.this,"Soil Moisture is Wet, Irrigation Schedule Cancelled",Toast.LENGTH_SHORT);
+                            }
+                            else {
 
+                                alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                                String durationString = editTextDuration.getText().toString();
+                                int duration = Integer.parseInt(durationString);
+                                int waterConsumption = (int) (duration * 33.33);
+                                String waterLevelHolder;
 
-
+                                serviceIntent.putExtra("duration", editTextDuration.getText().toString());
+                                serviceIntent.putExtra("humidity", snapshot.child("humidity").getValue().toString());
+                                serviceIntent.putExtra("soilMoisture", snapshot.child("soilMoisture").getValue().toString());
+                                serviceIntent.putExtra("temperature", snapshot.child("temperature").getValue().toString());
+                                serviceIntent.putExtra("waterLevel", snapshot.child("waterLevel").getValue().toString());
+                                serviceIntent.putExtra("waterConsumption", String.valueOf(waterConsumption));
+                                serviceIntent.putExtra("time", selectedTime);
+                                alarmServiceIntent = PendingIntent.getBroadcast(ScheduleActivity.this, 0, serviceIntent, PendingIntent.FLAG_IMMUTABLE);
+                                timeInMilliSeconds = calendar.getTimeInMillis();
+                                alarmManager.setExact(AlarmManager.RTC_WAKEUP, timeInMilliSeconds, alarmServiceIntent);
+                            }
                         }
                     }
 

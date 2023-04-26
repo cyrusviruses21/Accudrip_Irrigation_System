@@ -90,7 +90,7 @@ public class ScheduleService extends BroadcastReceiver {
     private void createNotification(Context context) {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        // Create the notification channel (for Android 8.0 or higher)
+        // Create the notification channel (for Android 8.0 or higher) this is required
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel notificationChannel = new NotificationChannel(
                     CHANNEL_ID,
