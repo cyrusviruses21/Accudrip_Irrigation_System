@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         manualIrrigateIcon.setOnClickListener(this);
         manualIrrigate = (TextView) findViewById(R.id.manualIrrigate);
         manualIrrigate.setOnClickListener(this);
-        humidity = (TextView) findViewById(R.id.humidityData);
+        humidity = (TextView ) findViewById(R.id.humidityData);
         waterLevel = (TextView) findViewById(R.id.waterLevelData);
         soilMoisture = (TextView) findViewById(R.id.soilMoistureData);
         temperature = (TextView) findViewById(R.id.temperatureData);

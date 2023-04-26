@@ -174,6 +174,9 @@ public class ScheduleActivity extends AppCompatActivity {
                             alarmServiceIntent = PendingIntent.getBroadcast(ScheduleActivity.this, 0, serviceIntent, PendingIntent.FLAG_IMMUTABLE);
                             timeInMilliSeconds = calendar.getTimeInMillis();
                             alarmManager.setExact(AlarmManager.RTC_WAKEUP, timeInMilliSeconds, alarmServiceIntent);
+
+
+
                         }
                     }
 
