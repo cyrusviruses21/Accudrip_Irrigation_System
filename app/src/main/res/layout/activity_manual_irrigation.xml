@@ -19,7 +19,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/light">
+            android:background="@drawable/bom3">
 
             <LinearLayout
                 android:id="@+id/linearLayout"
@@ -43,7 +43,7 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/white">
+                        android:background="@drawable/light">
 
                         <TextView
                             android:id="@+id/textView5"
@@ -53,21 +53,29 @@
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/baloo"
+                            android:shadowColor="#808080"
+                            android:shadowDx="5"
+                            android:shadowDy="5"
+                            android:shadowRadius="2"
                             android:text="Water Level "
-                            android:textColor="#8f8c8c"
-                            android:textSize="24sp" />
+                            android:textColor="@color/white"
+                            android:textSize="35sp" />
+
                         <TextView
                             android:id="@+id/waterLevel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/aclonica"
-                            android:text="..."
-                            android:textColor="#88dde3"
-                            android:textSize="30sp"
-                            android:layout_centerHorizontal="true"
                             android:layout_below="@id/textView5"
+                            android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            />
+                            android:fontFamily="@font/aclonica"
+                            android:shadowColor="#808080"
+                            android:shadowDx="5"
+                            android:shadowDy="5"
+                            android:shadowRadius="2"
+                            android:text="..."
+                            android:textColor="@color/black"
+                            android:textSize="30sp" />
 
                         <ImageView
                             android:id="@+id/imageView3"
@@ -81,10 +89,10 @@
 
                         <Button
                             android:id="@+id/sched"
-                            android:visibility="gone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="SET SCHED"/>
+                            android:text="SET SCHED"
+                            android:visibility="gone" />
 
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
@@ -96,8 +104,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo"
+                android:shadowColor="#808080"
+                android:shadowDx="8"
+                android:shadowDy="7"
+                android:shadowRadius="5"
                 android:text="MANUAL"
-                android:textColor="@color/white"
+                android:textColor="#3ac2f0"
                 android:textSize="45sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -111,8 +123,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo"
+                android:shadowColor="#808080"
+                android:shadowDx="8"
+                android:shadowDy="7"
+                android:shadowRadius="5"
                 android:text="IRRIGATION"
-                android:textColor="#FFFFFF"
+                android:textColor="#43f082"
                 android:textSize="25sp"
                 app:layout_constraintEnd_toEndOf="@+id/title"
                 app:layout_constraintStart_toStartOf="@+id/title"
@@ -123,8 +139,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#008f8c8c"
-                android:paddingTop="25dp"
                 android:paddingLeft="20dp"
+                android:paddingTop="25dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/backakon1" />
@@ -136,27 +152,36 @@
                 android:layout_marginTop="5dp"
                 android:background="@drawable/backgroundniba"
                 android:backgroundTint="#8df0c6"
+                android:elevation="7dp"
                 android:fontFamily="@font/baloo"
+                android:shadowColor="#808080"
+                android:shadowDx="4"
+                android:shadowDy="4"
+                android:shadowRadius="5"
                 android:text="OFF"
                 android:textColor="@color/white"
-                android:textSize="25sp"
+                android:textSize="30sp"
                 android:textStyle="italic"
                 app:backgroundTint="@null"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-                tools:ignore="UseSwitchCompatOrMaterialXml"
-                />
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
 
             <TextView
                 android:id="@+id/waterPumpLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Water Pump"
-                android:textSize="25sp"
-                android:fontFamily="@font/baloo"
                 android:layout_marginTop="5dp"
+                android:fontFamily="@font/baloo"
+                android:shadowColor="#808080"
+                android:shadowDx="5"
+                android:shadowDy="4"
+                android:shadowRadius="5"
+                android:text="Water Pump"
+                android:textColor="@color/white"
+                android:textSize="25sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/switchPump" />
@@ -165,7 +190,7 @@
                 android:id="@+id/editTextDuration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Timer (Seconds)"
+                android:hint="Timer (secs)"
                 android:textColorHint="#8f8c8c"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -175,15 +200,19 @@
                 android:id="@+id/buttonStart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Start"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editTextDuration"
                 android:background="@drawable/backgroundniba"
                 android:backgroundTint="#8df0c6"
+                android:fontFamily="@font/baloo"
+                android:shadowColor="#808080"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="2"
+                android:text="Start"
+                android:textSize="22sp"
                 app:backgroundTint="@null"
-                android:fontFamily="@font/baloo"/>
-
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/editTextDuration" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -193,16 +222,19 @@
         android:id="@+id/home"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/baloo"
         android:background="@drawable/btn_background"
+        android:fontFamily="@font/baloo"
         android:text="HOME"
         android:textColor="#3b3939"
         app:backgroundTint="@null"
+        android:shadowColor="#808080"
+        android:shadowDx="2"
+        android:shadowDy="3"
+        android:shadowRadius="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

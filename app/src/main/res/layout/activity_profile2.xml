@@ -35,6 +35,10 @@
                 android:layout_toRightOf="@id/profile_image"
                 android:fontFamily="@font/baloo"
                 android:includeFontPadding="false"
+                android:shadowColor="#808080"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="2"
                 android:text="Cyrus Louie Lopez"
                 android:textSize="20sp" />
 
@@ -47,6 +51,10 @@
                 android:layout_toRightOf="@id/profile_image"
                 android:fontFamily="@font/baloo"
                 android:includeFontPadding="false"
+                android:shadowColor="#808080"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="2"
                 android:text="cyruslouielopez@gmail.com"
                 android:textSize="14sp" />
 
@@ -86,6 +94,10 @@
                         android:fontFamily="@font/baloo"
                         android:includeFontPadding="false"
                         android:text="..."
+                        android:shadowColor="#808080"
+                        android:shadowDx="2"
+                        android:shadowDy="2"
+                        android:shadowRadius="2"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -97,8 +109,12 @@
                         android:layout_centerInParent="true"
                         android:fontFamily="@font/baloo"
                         android:includeFontPadding="false"
-                        android:textColor="@color/white"
                         android:text="Schedule"
+                        android:shadowColor="#808080"
+                        android:shadowDx="2"
+                        android:shadowDy="2"
+                        android:shadowRadius="2"
+                        android:textColor="@color/white"
                         android:textSize="14sp" />
 
 
@@ -134,6 +150,10 @@
                         android:fontFamily="@font/baloo"
                         android:includeFontPadding="false"
                         android:text="..."
+                        android:shadowColor="#808080"
+                        android:shadowDx="2"
+                        android:shadowDy="2"
+                        android:shadowRadius="2"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -146,6 +166,10 @@
                         android:fontFamily="@font/baloo"
                         android:includeFontPadding="false"
                         android:text="Monthly Water"
+                        android:shadowColor="#808080"
+                        android:shadowDx="2"
+                        android:shadowDy="2"
+                        android:shadowRadius="2"
                         android:textColor="@color/white"
                         android:textSize="10sp" />
 
@@ -154,8 +178,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/total_label"
-                        android:layout_marginTop="12dp"
                         android:layout_centerHorizontal="true"
+                        android:layout_marginTop="12dp"
+                        android:shadowColor="#808080"
+                        android:shadowDx="2"
+                        android:shadowDy="2"
+                        android:shadowRadius="2"
                         android:fontFamily="@font/baloo"
                         android:includeFontPadding="false"
                         android:text="Consumption (ml)"
@@ -173,8 +201,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:background="#edebeb"
+            android:orientation="vertical"
             android:padding="20dp">
 
             <com.google.android.material.textfield.TextInputLayout
@@ -183,6 +211,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:hint="Full Name"
+                android:shadowColor="#808080"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="2"
                 android:textColorHint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -191,6 +223,10 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:fontFamily="@font/baloo"
+                    android:shadowColor="#808080"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="2"
                     android:text="Loading..."
                     android:textColor="@color/black" />
 
@@ -202,6 +238,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:hint="Email"
+                android:shadowColor="#808080"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="2"
                 android:textColorHint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -210,6 +250,10 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:fontFamily="@font/baloo"
+                    android:shadowColor="#808080"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="2"
                     android:text="Loading..."
                     android:textColor="@color/black" />
 
@@ -220,6 +264,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:shadowColor="#808080"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="2"
                 android:hint="Phone Number"
                 android:textColorHint="@color/black">
 
@@ -229,6 +277,10 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:fontFamily="@font/baloo"
+                    android:shadowColor="#808080"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="2"
                     android:text="Loading..."
                     android:textColor="@color/black" />
 
@@ -240,6 +292,10 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="#fa7850"
                 android:fontFamily="@font/baloo"
+                android:shadowColor="#808080"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="2"
                 android:text="Update" />
 
 

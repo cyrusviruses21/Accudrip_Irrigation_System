@@ -92,6 +92,10 @@
                         android:background="@android:color/transparent"
                         android:fontFamily="@font/baloo"
                         android:includeFontPadding="false"
+                        android:shadowColor="#808080"
+                        android:shadowDx="2"
+                        android:shadowDy="2"
+                        android:shadowRadius="2"
                         android:text="4:30"
                         android:textColor="#454444"
                         android:textSize="25sp" />
@@ -105,6 +109,10 @@
                         android:fontFamily="@font/baloo"
                         android:includeFontPadding="false"
                         android:text="Time"
+                        android:shadowColor="#808080"
+                        android:shadowDx="2"
+                        android:shadowDy="2"
+                        android:shadowRadius="2"
                         android:textSize="20sp" />
 
 
@@ -142,6 +150,10 @@
                         android:inputType="number"
                         android:textColor="#454444"
                         android:textColorHint="#454444"
+                        android:shadowColor="#808080"
+                        android:shadowDx="2"
+                        android:shadowDy="2"
+                        android:shadowRadius="2"
                         android:textSize="30sp" />
 
                     <TextView
@@ -153,6 +165,10 @@
                         android:fontFamily="@font/baloo"
                         android:includeFontPadding="false"
                         android:text="Duration"
+                        android:shadowColor="#808080"
+                        android:shadowDx="2"
+                        android:shadowDy="2"
+                        android:shadowRadius="2"
                         android:textSize="20sp" />
 
 
@@ -177,6 +193,10 @@
                 android:layout_height="75dp"
                 android:backgroundTint="#18ccd9"
                 android:fontFamily="@font/baloo"
+                android:shadowColor="#808080"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="5"
                 android:textSize="25sp"
                 android:text="START" />
 
@@ -186,6 +206,10 @@
                 android:layout_height="75dp"
                 android:backgroundTint="#fa6e6e"
                 android:fontFamily="@font/baloo"
+                android:shadowColor="#808080"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="5"
                 android:textSize="20sp"
                 android:text="cancel" />
 

@@ -106,7 +106,7 @@ public class ManualIrrigationActivity extends AppCompatActivity implements View.
         switchPump.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (status.equals("1")) { // Check if water level is LOW
                 switchPump.setChecked(false); // Set switch to unchecked
-                Toast.makeText(ManualIrrigationActivity.this, "Water level is LOW. Cannot turn on the pump.", Toast.LENGTH_SHORT).show(); // Show a toast message
+                Toast.makeText(ManualIrrigationActivity.this, "Water level is LOW. Cannot turn on the pump.", Toast.LENGTH_SHORT).show();
             } else { // Water level is not LOW
                 if (isChecked) {
                     switchPump.setText("ON"); // Set label to "On" when checked
@@ -150,6 +150,7 @@ public class ManualIrrigationActivity extends AppCompatActivity implements View.
     public void onClick(View view) {
         if (view.getId() == R.id.home) {
             startActivity(new Intent(this, MainActivity.class));
+            finish();
         }
     }
 }

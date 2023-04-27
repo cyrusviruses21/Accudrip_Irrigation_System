@@ -109,6 +109,10 @@
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/baloo"
                             android:text="Humidity "
+                            android:shadowColor="#808080"
+                            android:shadowDx="5"
+                            android:shadowDy="5"
+                            android:shadowRadius="5"
                             android:textColor="@color/white"
                             android:textSize="24sp" />
 
@@ -159,6 +163,10 @@
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/baloo"
                             android:text="Water Level"
+                            android:shadowColor="#808080"
+                            android:shadowDx="5"
+                            android:shadowDy="5"
+                            android:shadowRadius="5"
                             android:textColor="@color/white"
                             android:textSize="24sp" />
 
@@ -218,6 +226,10 @@
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/baloo"
                             android:text="Soil Moisture "
+                            android:shadowColor="#808080"
+                            android:shadowDx="5"
+                            android:shadowDy="5"
+                            android:shadowRadius="5"
                             android:textColor="@color/white"
                             android:textSize="22sp" />
 
@@ -266,6 +278,10 @@
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/baloo"
                             android:text="Temperature"
+                            android:shadowColor="#808080"
+                            android:shadowDx="5"
+                            android:shadowDy="5"
+                            android:shadowRadius="5"
                             android:textColor="@color/white"
                             android:textSize="22sp" />
 
@@ -340,6 +356,10 @@
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
                             android:layout_marginStart="27dp"
+                            android:shadowColor="#808080"
+                            android:shadowDx="5"
+                            android:shadowDy="5"
+                            android:shadowRadius="5"
                             android:layout_marginTop="26dp"
                             android:layout_marginBottom="25dp"
                             android:layout_toEndOf="@+id/manualIrrigateIcon"
