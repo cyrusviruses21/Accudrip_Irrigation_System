@@ -56,7 +56,6 @@ public class ScheduleActivity extends AppCompatActivity {
         // Initialize the Firebase database
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("ScheduleInfo");
-        DatabaseReference firebase = firebaseDatabase.getReference("soilMoisture");
         serviceIntent = new Intent(ScheduleActivity.this, ScheduleService.class);
         calendar = Calendar.getInstance();
 
@@ -157,17 +156,6 @@ public class ScheduleActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
-
-                            int soilMoisture = Integer.parseInt(snapshot.child("soilMoisture").getValue().toString());
-                            int soilMoistureThreshold = 100; // set the threshold value here
-
-                            if (soilMoisture > soilMoistureThreshold) {
-                                // soil moisture is too high, cancel the alarm
-                                alarmManager.cancel(alarmServiceIntent);
-                                Toast.makeText(ScheduleActivity.this,"Soil Moisture is Wet, Irrigation Schedule Cancelled",Toast.LENGTH_SHORT);
-                            }
-                            else {
-
                                 alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                                 String durationString = editTextDuration.getText().toString();
                                 int duration = Integer.parseInt(durationString);
@@ -184,7 +172,6 @@ public class ScheduleActivity extends AppCompatActivity {
                                 alarmServiceIntent = PendingIntent.getBroadcast(ScheduleActivity.this, 0, serviceIntent, PendingIntent.FLAG_IMMUTABLE);
                                 timeInMilliSeconds = calendar.getTimeInMillis();
                                 alarmManager.setExact(AlarmManager.RTC_WAKEUP, timeInMilliSeconds, alarmServiceIntent);
-                            }
                         }
                     }
 

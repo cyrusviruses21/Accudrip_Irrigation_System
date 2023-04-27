@@ -9,12 +9,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ManualIrrigationActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -26,6 +31,8 @@ public class ManualIrrigationActivity extends AppCompatActivity implements View.
     private EditText editTextDuration;
     private Button buttonStart;
     private CountDownTimer countDownTimer;
+    private TextView waterLevel;
+    String status;
     private long durationSeconds; // Duration in milliseconds
 
     @Override
@@ -36,6 +43,7 @@ public class ManualIrrigationActivity extends AppCompatActivity implements View.
         switchPump = findViewById(R.id.switchPump);
         editTextDuration = findViewById(R.id.editTextDuration);
         buttonStart = findViewById(R.id.buttonStart);
+        waterLevel = (TextView) findViewById(R.id.waterLevel);
 
         sched = (Button) findViewById(R.id.sched);
 
@@ -68,24 +76,52 @@ public class ManualIrrigationActivity extends AppCompatActivity implements View.
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                status = snapshot.child("waterLevel").getValue().toString();
+                //waterLevel.setText(status);
+                switch (status) {
+                    case "1":
+                        waterLevel.setText("LOW");
+                        break;
+                    default:
+                        waterLevel.setText("HIGH");
+                        break;
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         // Get reference to the Switch widget
         switchPump = findViewById(R.id.switchPump);
 
 
         // Set a listener for the switch state change
         switchPump.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                switchPump.setText("ON"); // Set label to "On" when checked
-                //musend sa currentstatus with date, time, duration.
+            if (status.equals("1")) { // Check if water level is LOW
+                switchPump.setChecked(false); // Set switch to unchecked
+                Toast.makeText(ManualIrrigationActivity.this, "Water level is LOW. Cannot turn on the pump.", Toast.LENGTH_SHORT).show(); // Show a toast message
+            } else { // Water level is not LOW
+                if (isChecked) {
+                    switchPump.setText("ON"); // Set label to "On" when checked
+                    //musend sa currentstatus with date, time, duration.
 
-            } else {
-                switchPump.setText("OFF"); // Set label to "Off" when unchecked
-                cancelTimer();
+                } else {
+                    switchPump.setText("OFF"); // Set label to "Off" when unchecked
+                    cancelTimer();
+                }
+
+                // Update the Firebase Realtime Database with the new pump status
+                databaseReference.child("pumpStatus").setValue(isChecked ? 1 : 0);
             }
-
-            // Update the Firebase Realtime Database with the new pump status
-            databaseReference.child("pumpStatus").setValue(isChecked ? 1 : 0);
         });
+
     }
 
     private void startTimer() {
