@@ -26,7 +26,7 @@ public class ManualIrrigationActivity extends AppCompatActivity implements View.
     //variables
     private DatabaseReference databaseReference;
     private Switch switchPump;
-    private Button home,sched;
+    private Button home;
     private ImageButton back;
     private EditText editTextDuration;
     private Button buttonStart;
@@ -45,7 +45,6 @@ public class ManualIrrigationActivity extends AppCompatActivity implements View.
         buttonStart = findViewById(R.id.buttonStart);
         waterLevel = (TextView) findViewById(R.id.waterLevel);
 
-        sched = (Button) findViewById(R.id.sched);
 
         back = (ImageButton) findViewById(R.id.back);
         home = (Button) findViewById(R.id.home);
@@ -69,8 +68,10 @@ public class ManualIrrigationActivity extends AppCompatActivity implements View.
             }
         });
 
-        sched.setOnClickListener(v -> startActivity(new Intent(ManualIrrigationActivity.this, TestingActivity.class)));
-        back.setOnClickListener(v -> startActivity(new Intent(ManualIrrigationActivity.this, MainActivity.class)));
+        back.setOnClickListener(v -> {
+            startActivity(new Intent(ManualIrrigationActivity.this, MainActivity.class));
+            finish();
+        });
 
         // Initialize Firebase Database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -104,19 +105,17 @@ public class ManualIrrigationActivity extends AppCompatActivity implements View.
 
         // Set a listener for the switch state change
         switchPump.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (status.equals("1")) { // Check if water level is LOW
+            if (status.equals("0")) { // Check if water level is LOW
                 switchPump.setChecked(false); // Set switch to unchecked
                 Toast.makeText(ManualIrrigationActivity.this, "Water level is LOW. Cannot turn on the pump.", Toast.LENGTH_SHORT).show();
             } else { // Water level is not LOW
                 if (isChecked) {
                     switchPump.setText("ON"); // Set label to "On" when checked
                     //musend sa currentstatus with date, time, duration.
-
                 } else {
                     switchPump.setText("OFF"); // Set label to "Off" when unchecked
                     cancelTimer();
                 }
-
                 // Update the Firebase Realtime Database with the new pump status
                 databaseReference.child("pumpStatus").setValue(isChecked ? 1 : 0);
             }
@@ -131,6 +130,7 @@ public class ManualIrrigationActivity extends AppCompatActivity implements View.
             public void onTick(long millisUntilFinished) {
                 // Do nothing during the timer tick
             }
+
             @Override
             public void onFinish() {
                 // Turn off the switch when the timer finishes
@@ -139,6 +139,7 @@ public class ManualIrrigationActivity extends AppCompatActivity implements View.
         };
         countDownTimer.start();
     }
+
     private void cancelTimer() {
         if (countDownTimer != null) {
             countDownTimer.cancel();
@@ -148,9 +149,11 @@ public class ManualIrrigationActivity extends AppCompatActivity implements View.
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.home) {
-            startActivity(new Intent(this, MainActivity.class));
-            finish();
+        switch (view.getId()) {
+            case R.id.home:
+                startActivity(new Intent(this, MainActivity.class));
+                finish();
+                break;
         }
     }
 }

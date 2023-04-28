@@ -1,5 +1,6 @@
 package com.arain.v2;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -85,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 status = dataSnapshot.child("waterLevel").getValue().toString();
                 //waterLevel.setText(status);
                 switch (status) {
-                    case "1":
+                    case "0":
                         waterLevel.setText("LOW");
                         break;
                     default:
@@ -138,6 +139,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
@@ -151,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent1);
                 break;
             case R.id.nav_profile:
-                Intent intent2 = new Intent(this, ProfileActivity2.class);
+                Intent intent2 = new Intent(this, ProfileActivity.class);
                 startActivity(intent2);
                 break;
             case R.id.nav_logout:

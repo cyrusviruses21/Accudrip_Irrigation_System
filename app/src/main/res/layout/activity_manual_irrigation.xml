@@ -87,12 +87,6 @@
                             android:layout_marginTop="15dp"
                             app:srcCompat="@drawable/waterlevel1" />
 
-                        <Button
-                            android:id="@+id/sched"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="SET SCHED"
-                            android:visibility="gone" />
 
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
