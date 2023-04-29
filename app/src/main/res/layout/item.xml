@@ -123,7 +123,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo"
-                android:text="65"
+                android:text="DRY"
                 android:layout_marginLeft="62dp"
                 android:textColor="#ffe45c"
                 android:textSize="22sp"

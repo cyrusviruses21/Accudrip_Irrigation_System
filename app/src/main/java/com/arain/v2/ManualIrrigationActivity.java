@@ -83,8 +83,11 @@ public class ManualIrrigationActivity extends AppCompatActivity implements View.
                 status = snapshot.child("waterLevel").getValue().toString();
                 //waterLevel.setText(status);
                 switch (status) {
-                    case "1":
+                    case "0":
                         waterLevel.setText("LOW");
+                        switchPump.setChecked(false);
+                        databaseReference.child("pumpStatus").setValue(0);
+                        switchPump.setText("OFF");
                         break;
                     default:
                         waterLevel.setText("HIGH");
@@ -111,7 +114,6 @@ public class ManualIrrigationActivity extends AppCompatActivity implements View.
             } else { // Water level is not LOW
                 if (isChecked) {
                     switchPump.setText("ON"); // Set label to "On" when checked
-                    //musend sa currentstatus with date, time, duration.
                 } else {
                     switchPump.setText("OFF"); // Set label to "Off" when unchecked
                     cancelTimer();
@@ -120,6 +122,7 @@ public class ManualIrrigationActivity extends AppCompatActivity implements View.
                 databaseReference.child("pumpStatus").setValue(isChecked ? 1 : 0);
             }
         });
+
 
     }
 

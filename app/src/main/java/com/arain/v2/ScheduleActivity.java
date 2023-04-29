@@ -160,7 +160,7 @@ public class ScheduleActivity extends AppCompatActivity {
                                 String durationString = editTextDuration.getText().toString();
                                 int duration = Integer.parseInt(durationString);
                                 int waterConsumption = (int) (duration * 33.33);
-                                String waterLevelHolder;
+
 
                                 serviceIntent.putExtra("duration", editTextDuration.getText().toString());
                                 serviceIntent.putExtra("humidity", snapshot.child("humidity").getValue().toString());
