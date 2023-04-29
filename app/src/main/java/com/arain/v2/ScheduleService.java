@@ -28,7 +28,7 @@ public class ScheduleService extends BroadcastReceiver {
             int soilMoisture = Integer.parseInt(intent.getStringExtra("soilMoisture"));
             int threshold = 100; // Change this value to set the threshold
 
-            if (soilMoisture > threshold || "1".equals(intent.getStringExtra("waterLevel"))) {
+            if (soilMoisture > threshold || "0".equals(intent.getStringExtra("waterLevel"))) {
                 // Cancel the existing timer and show a notification
                 cancelTimer();
                 createSoilMoistureNotification(context);

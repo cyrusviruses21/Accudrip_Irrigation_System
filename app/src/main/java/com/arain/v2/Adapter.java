@@ -36,10 +36,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         holder.schedDate.setText(scheduleReports.getDate());
         holder.schedDuration.setText(scheduleReports.getDuration());
         holder.humidityStat.setText(scheduleReports.getHumidity());
-        holder.soilMoistureStat.setText(scheduleReports.getSoilMoisture());
+//        holder.soilMoistureStat.setText(scheduleReports.getSoilMoisture());
         holder.tempStat.setText(scheduleReports.getTemperature());
         holder.schedTime.setText(scheduleReports.getTime());
-        holder.waterLevelStat.setText(scheduleReports.getWaterLevel());
+//        holder.waterLevelStat.setText(scheduleReports.getWaterLevel());
 
     }
 
@@ -59,10 +59,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
             schedDate = itemView.findViewById(R.id.schedDate);
             schedDuration = itemView.findViewById(R.id.schedDuration);
             humidityStat = itemView.findViewById(R.id.humidityStat);
-            soilMoistureStat = itemView.findViewById(R.id.soilMoistureStat);
+//            soilMoistureStat = itemView.findViewById(R.id.soilMoistureStat);
             tempStat = itemView.findViewById(R.id.tempStat);
             schedTime = itemView.findViewById(R.id.schedTime);
-            waterLevelStat = itemView.findViewById(R.id.waterLevelStat);
+//            waterLevelStat = itemView.findViewById(R.id.waterLevelStat);
 
         }
     }
