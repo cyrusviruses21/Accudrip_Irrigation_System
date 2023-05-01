@@ -78,7 +78,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 // Validate input using regular expression
                 String input = s.toString().trim();
-                String regex = "^(?=.*[a-zA-Z])[a-zA-Z0-9]+$"; // At least one character and no special characters
+                String regex = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+(\\.[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+)*@[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)*$"; // At least one character and no special characters exempt @ and .
                 if (!input.matches(regex)) {
                     editTextEmail.setError("Invalid email address");
                 } else {
