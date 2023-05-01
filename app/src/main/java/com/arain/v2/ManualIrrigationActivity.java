@@ -21,6 +21,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
+
 public class ManualIrrigationActivity extends AppCompatActivity implements View.OnClickListener {
 
     //variables
@@ -33,7 +36,7 @@ public class ManualIrrigationActivity extends AppCompatActivity implements View.
     private CountDownTimer countDownTimer;
     private TextView waterLevel;
     String status;
-    private long durationSeconds; // Duration in milliseconds
+    private long durationSeconds; // Duration in seconds
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +48,6 @@ public class ManualIrrigationActivity extends AppCompatActivity implements View.
         buttonStart = findViewById(R.id.buttonStart);
         waterLevel = (TextView) findViewById(R.id.waterLevel);
 
-
         back = (ImageButton) findViewById(R.id.back);
         home = (Button) findViewById(R.id.home);
         home.setOnClickListener(this);
@@ -53,15 +55,24 @@ public class ManualIrrigationActivity extends AppCompatActivity implements View.
         buttonStart.setOnClickListener(v -> {
             String durationString = editTextDuration.getText().toString();
             if (!TextUtils.isEmpty(durationString)) {
-                // Get the duration in seconds from user input
-                int duration = Integer.parseInt(durationString);
-                durationSeconds = duration; // Assign duration to durationSeconds
-                // Convert to milliseconds
-                durationSeconds *= 1000;
-                // Turn on the switch
-                switchPump.setChecked(true);
-                // Start the timer
-                startTimer();
+                // Get the duration from user input
+                String[] durationParts = durationString.split(":");
+                if (durationParts.length == 3) {
+                    int hours = Integer.parseInt(durationParts[0]);
+                    int minutes = Integer.parseInt(durationParts[1]);
+                    int seconds = Integer.parseInt(durationParts[2]);
+
+                    // Convert to seconds
+                    durationSeconds = (hours * 60 * 60) + (minutes * 60) + seconds;
+
+                    // Turn on the switch
+                    switchPump.setChecked(true);
+                    // Start the timer
+                    startTimer();
+                } else {
+                    // Show an error message if duration is not provided in the correct format
+                    Toast.makeText(ManualIrrigationActivity.this, "Enter a duration in the format 'hh:mm:ss'", Toast.LENGTH_SHORT).show();
+                }
             } else {
                 // Show an error message if duration is not provided
                 Toast.makeText(ManualIrrigationActivity.this, "Enter a duration", Toast.LENGTH_SHORT).show();
@@ -114,40 +125,49 @@ public class ManualIrrigationActivity extends AppCompatActivity implements View.
             } else { // Water level is not LOW
                 if (isChecked) {
                     switchPump.setText("ON"); // Set label to "On" when checked
+                    startTimer(); // Start the timer
                 } else {
-                    switchPump.setText("OFF"); // Set label to "Off" when unchecked
+                    switchPump.setText("OFF");
+                    buttonStart.setText("START");
                     cancelTimer();
                 }
-                // Update the Firebase Realtime Database with the new pump status
-                databaseReference.child("pumpStatus").setValue(isChecked ? 1 : 0);
+                databaseReference.child("pumpStatus").setValue(isChecked ? 1 : 0); // Save the pump status to the database
             }
         });
-
-
     }
 
+    // Method to start the timer
     private void startTimer() {
         cancelTimer(); // Cancel any existing timer before starting a new one
-        countDownTimer = new CountDownTimer(durationSeconds, durationSeconds) {
-            @Override
+        countDownTimer = new CountDownTimer(durationSeconds * 1000, 1000) {
+
             public void onTick(long millisUntilFinished) {
-                // Do nothing during the timer tick
+                long minutes = TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) % 60;
+                long seconds = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) % 60;
+                buttonStart.setText(String.format(Locale.getDefault(), "Time: %02d:%02d", minutes, seconds));
             }
 
-            @Override
             public void onFinish() {
-                // Turn off the switch when the timer finishes
                 switchPump.setChecked(false);
+                buttonStart.setText("Start");
+                databaseReference.child("pumpStatus").setValue(0);
             }
         };
         countDownTimer.start();
     }
-
     private void cancelTimer() {
         if (countDownTimer != null) {
             countDownTimer.cancel();
             countDownTimer = null;
         }
+    }
+
+    // Method to stop the timer
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        cancelTimer();
     }
 
     @Override

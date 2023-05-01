@@ -2,6 +2,10 @@ package com.arain.v2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.InputFilter;
+import android.text.Spanned;
+import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -10,22 +14,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class RegistrationActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -59,8 +54,42 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         registerUser.setOnClickListener(this);
 
         editTextFullname = (EditText) findViewById(R.id.fullName);
+        editTextFullname.setFilters(new InputFilter[]{
+                new InputFilter() {
+                    public CharSequence filter(CharSequence source, int start, int end,
+                                               Spanned dest, int dstart, int dend) {
+                        for (int i = start; i < end; i++) {
+                            if (!Character.isLetter(source.charAt(i)) && source.charAt(i) != ' ') {
+                                return "";
+                            }
+                        }
+                        return null;
+                    }
+                }
+        });
         editTextPhoneNumber = (EditText) findViewById(R.id.phoneNumber);
         editTextEmail = (EditText) findViewById(R.id.email);
+        editTextEmail.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Validate input using regular expression
+                String input = s.toString().trim();
+                String regex = "^(?=.*[a-zA-Z])[a-zA-Z0-9]+$"; // At least one character and no special characters
+                if (!input.matches(regex)) {
+                    editTextEmail.setError("Invalid email address");
+                } else {
+                    editTextEmail.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
         editTextPassword = (EditText) findViewById(R.id.password);
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);

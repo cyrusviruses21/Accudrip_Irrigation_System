@@ -156,22 +156,22 @@ public class ScheduleActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
-                                alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-                                String durationString = editTextDuration.getText().toString();
-                                int duration = Integer.parseInt(durationString);
-                                int waterConsumption = (int) (duration * 33.33);
+                            alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                            String durationString = editTextDuration.getText().toString();
+                            int duration = Integer.parseInt(durationString);
+                            int waterConsumption = (int) (duration * 33.33);
 
 
-                                serviceIntent.putExtra("duration", editTextDuration.getText().toString());
-                                serviceIntent.putExtra("humidity", snapshot.child("humidity").getValue().toString());
-                                serviceIntent.putExtra("soilMoisture", snapshot.child("soilMoisture").getValue().toString());
-                                serviceIntent.putExtra("temperature", snapshot.child("temperature").getValue().toString());
-                                serviceIntent.putExtra("waterLevel", snapshot.child("waterLevel").getValue().toString());
-                                serviceIntent.putExtra("waterConsumption", String.valueOf(waterConsumption));
-                                serviceIntent.putExtra("time", selectedTime);
-                                alarmServiceIntent = PendingIntent.getBroadcast(ScheduleActivity.this, 0, serviceIntent, PendingIntent.FLAG_IMMUTABLE);
-                                timeInMilliSeconds = calendar.getTimeInMillis();
-                                alarmManager.setExact(AlarmManager.RTC_WAKEUP, timeInMilliSeconds, alarmServiceIntent);
+                            serviceIntent.putExtra("duration", editTextDuration.getText().toString());
+                            serviceIntent.putExtra("humidity", snapshot.child("humidity").getValue().toString());
+                            serviceIntent.putExtra("soilMoisture", snapshot.child("soilMoisture").getValue().toString());
+                            serviceIntent.putExtra("temperature", snapshot.child("temperature").getValue().toString());
+                            serviceIntent.putExtra("waterLevel", snapshot.child("waterLevel").getValue().toString());
+                            serviceIntent.putExtra("waterConsumption", String.valueOf(waterConsumption));
+                            serviceIntent.putExtra("time", selectedTime);
+                            alarmServiceIntent = PendingIntent.getBroadcast(ScheduleActivity.this, 0, serviceIntent, PendingIntent.FLAG_IMMUTABLE);
+                            timeInMilliSeconds = calendar.getTimeInMillis();
+                            alarmManager.setExact(AlarmManager.RTC_WAKEUP, timeInMilliSeconds, alarmServiceIntent);
                         }
                     }
 

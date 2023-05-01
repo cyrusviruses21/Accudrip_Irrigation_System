@@ -20,4 +20,23 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="irrigate">IRRIGATE</string>
     <string name="schedule_irrigate">Schedule Irrigate</string>
+    <string-array name="duration_units">
+        <item>Seconds</item>
+        <item>Minutes</item>
+        <item>Hours</item>
+    </string-array>
+    <string-array name="months_array">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
 </resources>

@@ -91,7 +91,7 @@
                 android:drawableEnd="@drawable/ic_baseline_person_24"
                 android:drawablePadding="10dp"
                 android:ems="10"
-                android:inputType="textEmailAddress"
+                android:inputType="textPersonName"
                 android:textColor="#3b3939"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"

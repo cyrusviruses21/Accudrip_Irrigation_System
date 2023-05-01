@@ -24,7 +24,7 @@
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="0dp"
-                android:layout_height="300dp"
+                android:layout_height="230dp"
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal"
                 android:padding="20dp"
@@ -59,7 +59,7 @@
                             android:shadowRadius="2"
                             android:text="Water Level "
                             android:textColor="@color/white"
-                            android:textSize="35sp" />
+                            android:textSize="24sp" />
 
                         <TextView
                             android:id="@+id/waterLevel"
@@ -75,12 +75,12 @@
                             android:shadowRadius="2"
                             android:text="..."
                             android:textColor="@color/black"
-                            android:textSize="30sp" />
+                            android:textSize="20sp" />
 
                         <ImageView
                             android:id="@+id/imageView3"
-                            android:layout_width="75dp"
-                            android:layout_height="75dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
                             android:layout_centerInParent="false"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="false"
@@ -184,11 +184,33 @@
                 android:id="@+id/editTextDuration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Timer (secs)"
+                android:shadowColor="#808080"
+                android:shadowDx="5"
+                android:shadowDy="4"
+                android:shadowRadius="5"
+                android:text="00:00:00"
+                android:textColor="#0272fa"
                 android:textColorHint="#8f8c8c"
+                android:textSize="25sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/waterPumpLabel" />
+
+            <TextView
+                android:id="@+id/timerLbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Timer"
+                android:shadowColor="#e8e3e3"
+                android:shadowDx="7"
+                android:shadowDy="7"
+                android:shadowRadius="5"
+                android:textColor="@color/black"
+                android:fontFamily="@font/baloo"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/editTextDuration" />
 
             <Button
                 android:id="@+id/buttonStart"
@@ -196,6 +218,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/backgroundniba"
                 android:backgroundTint="#8df0c6"
+                android:inputType="number"
                 android:fontFamily="@font/baloo"
                 android:shadowColor="#808080"
                 android:shadowDx="5"
@@ -206,7 +229,7 @@
                 app:backgroundTint="@null"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editTextDuration" />
+                app:layout_constraintTop_toBottomOf="@id/timerLbl" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -218,13 +241,13 @@
         android:layout_height="wrap_content"
         android:background="@drawable/btn_background"
         android:fontFamily="@font/baloo"
-        android:text="HOME"
-        android:textColor="#3b3939"
-        app:backgroundTint="@null"
         android:shadowColor="#808080"
         android:shadowDx="2"
         android:shadowDy="3"
         android:shadowRadius="2"
+        android:text="HOME"
+        android:textColor="#3b3939"
+        app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

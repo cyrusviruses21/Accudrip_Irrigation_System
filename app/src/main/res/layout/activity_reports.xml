@@ -25,13 +25,23 @@
         android:shadowDy="5"
         android:shadowRadius="5"/>
 
+    <Spinner
+        android:id="@+id/monthSpinner"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_text_view" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/scheduleReports"
         android:layout_width="350dp"
-        android:layout_height="658dp"
+        android:layout_height="600dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_text_view" />
+        app:layout_constraintTop_toBottomOf="@+id/monthSpinner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
